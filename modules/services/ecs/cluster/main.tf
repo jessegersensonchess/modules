@@ -1,0 +1,48 @@
+resource "aws_ecs_cluster_capacity_providers" "capacity-providers" {
+  cluster_name       = aws_ecs_cluster.cluster.name
+  capacity_providers = var.capacity-providers
+  default_capacity_provider_strategy {
+    base              = 0
+    weight            = 100
+    capacity_provider = var.default-capacity-provider
+  }
+}
+
+resource "aws_ecs_cluster" "cluster" {
+  name = var.cluster-name
+
+  configuration {
+    execute_command_configuration {
+      logging = var.logging
+    }
+  }
+
+  service_connect_defaults {
+    namespace = aws_service_discovery_http_namespace.namespace.arn
+  }
+
+  setting {
+    name  = "containerInsights"
+    value = var.containerInsights-value
+  }
+
+  tags = {
+    APP         = var.service
+    Description = var.description
+    Owner       = var.owner
+    Created_By  = var.created-by
+    Environment = var.environment
+  }
+
+}
+
+resource "aws_service_discovery_http_namespace" "namespace" {
+  name        = var.service-discovery-namespace-arn
+  description = "namespace for ${var.service}"
+  tags = {
+    Created_By  = var.created-by
+    Environment = var.environment
+    Owner       = var.owner
+    Managed_By  = var.managed-by
+  }
+}
