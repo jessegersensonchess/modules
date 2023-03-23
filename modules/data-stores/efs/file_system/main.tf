@@ -4,7 +4,7 @@ resource "aws_efs_file_system" "filesystem" {
   performance_mode = var.performance_mode
 
   tags = {
-    Name           = "${var.service}"
+    Name           = var.service
     Owner          = var.owner
     Service        = var.service
     Env            = var.environment
