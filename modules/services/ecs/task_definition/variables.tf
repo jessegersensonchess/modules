@@ -3,6 +3,26 @@ variable "access_point_id-logs" {
   default = "my-access_point_id-logs"
 }
 
+variable "description" {
+  type    = string
+  default = "my-description"
+}
+
+variable "owner" {
+  type    = string
+  default = "my-owner"
+}
+
+variable "safe_to_delete" {
+  type    = bool
+  default = false
+}
+
+variable "service" {
+  type    = string
+  default = "my-service"
+}
+
 variable "file_system_id" {
   type    = string
   default = "my-file_system_id"

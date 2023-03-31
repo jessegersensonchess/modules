@@ -4,6 +4,11 @@ locals {
   containerPort      = var.containerPort
   hostPort           = var.hostPort
   execution_role_arn = var.execution_role_arn
+  owner	= var.owner
+  service = var.service
+  environment = var.environment
+	safe_to_delete = var.safe_to_delete
+	description = var.description
 }
 
 resource "aws_cloudwatch_log_group" "log_group" {
@@ -98,8 +103,13 @@ resource "aws_ecs_task_definition" "definition" {
   }
 
   tags = {
-    APP = "${var.app}"
-    ENV = "${var.environment}"
+    APP = var.app
+    ENV = local.environment
+    Environment = local.environment
+    Owner = local.owner
+    Service = local.service
+    safe_to_delete = local.safe_to_delete
+    Description = local.description
   }
 
   task_role_arn = local.execution_role_arn

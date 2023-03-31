@@ -85,12 +85,14 @@ module "task-definition" {
   source                 = "../../services/ecs/task_definition"
   image                  = "${module.ecr.aws_ecr_id.repository_url}:latest"
   app                    = local.service
+  service                    = local.service
   environment            = local.environment
   file_system_id         = module.efs.filesystem_id
   access_point_id-bin    = module.efs-access_point-bin.output["id"]
   access_point_id-config = module.efs-access_point-config.output["id"]
   access_point_id-logs   = module.efs-access_point-logs.output["id"]
   family                 = local.service
+  owner             = local.owner
   memory                 = var.task-definition-memory
   cpu                    = var.task-definition-cpu
   awslogs-region         = local.region
@@ -100,4 +102,7 @@ module "task-definition" {
   containerPort          = var.task-definition-containerPort
   hostPort               = var.task-definition-hostPort
   execution_role_arn     = var.execution_role_arn
+  description = "definition for ${local.service} in the ${local.environment} environment"
+  safe_to_delete = var.safe_to_delete
+  
 }

@@ -3,6 +3,11 @@ variable "health_check_path" {
   default = "my-health-check-path"
 }
 
+variable "description" {
+  type    = string
+  default = "my-description"
+}
+
 variable "environment" {
   type    = string
   default = "my-environment"
@@ -19,6 +24,11 @@ variable "region" {
 }
 
 variable "force_delete" {
+  type    = bool
+  default = false
+}
+
+variable "safe_to_delete" {
   type    = bool
   default = false
 }
