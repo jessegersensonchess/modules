@@ -1,4 +1,4 @@
-name: Manual workflow
+name: Create release
 
 env:
   binary: README.md
