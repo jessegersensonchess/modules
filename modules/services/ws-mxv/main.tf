@@ -89,7 +89,7 @@ module "target-group" {
 }
 
 module "task-definition" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition?ref=v0.0.7"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition?ref=v0.0.8"
   image                  = "${module.ecr.aws_ecr_id.repository_url}:latest"
   app                    = local.service
   service                    = local.service
