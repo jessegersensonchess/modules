@@ -19,7 +19,7 @@ variable "safe_to_delete" {
 }
 
 variable "mountPoints" {
-  type    = list(string)
+  type = list(map(string))
   default = []
 }
 
