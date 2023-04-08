@@ -55,7 +55,23 @@ resource "aws_ecs_task_definition" "definition" {
           "awslogs-stream-prefix" : "${var.awslogs-stream-prefix}"
         }
       },
-      "mountPoints" : "${var.mountPoints}",
+            "mountPoints": [
+                {
+                    "sourceVolume": "bin",
+                    "containerPath": "${var.bin-containerPath}",
+                    "readOnly": true
+                },
+                {
+                    "sourceVolume": "config",
+                    "containerPath": "${var.config-containerPath}",
+                    "readOnly": true
+                },
+                {
+                    "sourceVolume": "logs",
+                    "containerPath": "${var.logs-containerPath}",
+                    "readOnly": false
+                }
+            ], 
       "name" : "${local.container_name}",
       "portMappings" : [
         {
