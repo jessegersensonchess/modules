@@ -18,6 +18,11 @@ variable "safe_to_delete" {
   default = false
 }
 
+variable "mountPoints" {
+  type    = list(string)
+  default = []
+}
+
 variable "service" {
   type    = string
   default = "my-service"
