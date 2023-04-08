@@ -89,7 +89,7 @@ module "target-group" {
 }
 
 module "task-definition" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition?ref=v0.0.8"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition?ref=v0.0.9"
   image                  = "${module.ecr.aws_ecr_id.repository_url}:latest"
   app                    = local.service
   service                    = local.service
@@ -100,6 +100,10 @@ module "task-definition" {
   access_point_id-logs   = module.efs-access_point-logs.output["id"]
   family                 = local.service
   owner             = local.owner
+  bin-containerPath = var.bin-containerPath
+  logs-containerPath = var.logs-containerPath
+  config-containerPath = var.config-containerPath
+
   memory                 = var.task-definition-memory
   cpu                    = var.task-definition-cpu
   awslogs-region         = local.region

@@ -23,11 +23,21 @@ variable "region" {
   default = "my-region"
 }
 
-variable "mountPoints" {
-  type = list(map(string))
-#  type    = list(string)
-  default = []
+variable "bin-containerPath" {
+  type    = string
+  default = "/app/bin/cert"
 }
+
+variable "config-containerPath" {
+  type    = string
+  default = "/app/config/local"
+}
+
+variable "logs-containerPath" {
+  type    = string
+  default = "/app/logs"
+}
+
 
 variable "scan_on_push" {
   type    = bool
