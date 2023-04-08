@@ -24,7 +24,8 @@ variable "region" {
 }
 
 variable "mountPoints" {
-  type    = list(string)
+  type = list(map(string))
+#  type    = list(string)
   default = []
 }
 
