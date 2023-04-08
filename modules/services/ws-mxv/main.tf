@@ -89,8 +89,7 @@ module "target-group" {
 }
 
 module "task-definition" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition?ref=v0.0.5"
-#  source                 = "../../services/ecs/task_definition"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition?ref=v0.0.7"
   image                  = "${module.ecr.aws_ecr_id.repository_url}:latest"
   app                    = local.service
   service                    = local.service
@@ -112,5 +111,6 @@ module "task-definition" {
   execution_role_arn     = var.execution_role_arn
   description = "definition for ${local.service} in the ${local.environment} environment"
   safe_to_delete = var.safe_to_delete
+  mountPoints = var.mountPoints
   
 }

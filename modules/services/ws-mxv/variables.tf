@@ -23,6 +23,11 @@ variable "region" {
   default = "my-region"
 }
 
+variable "mountPoints" {
+  type    = list(string)
+  default = []
+}
+
 variable "scan_on_push" {
   type    = bool
   default = true
