@@ -115,6 +115,5 @@ module "task-definition" {
   execution_role_arn     = var.execution_role_arn
   description = "definition for ${local.service} in the ${local.environment} environment"
   safe_to_delete = var.safe_to_delete
-  mountPoints = var.mountPoints
   
 }
