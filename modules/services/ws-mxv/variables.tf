@@ -33,11 +33,15 @@ variable "config-containerPath" {
   default = "/app/config/local"
 }
 
+variable "container_environment" {
+ 	type = list(string)
+ 	default = {}
+ 	}
+
 variable "logs-containerPath" {
   type    = string
   default = "/app/logs"
 }
-
 
 variable "scan_on_push" {
   type    = bool
@@ -57,6 +61,11 @@ variable "safe_to_delete" {
 variable "owner" {
   type    = string
   default = "the owner"
+}
+
+variable "deregistration_delay" {
+  type    = number
+  default = 300
 }
 
 variable "container_port" {
@@ -163,3 +172,9 @@ variable "execution_role_arn" {
   type    = string
   default = "my-execution_role_arn"
 }
+
+variable "force_new_deployment" {
+        type = bool
+        default = true
+}
+

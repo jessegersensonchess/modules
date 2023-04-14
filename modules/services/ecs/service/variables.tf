@@ -112,3 +112,9 @@ variable "task_definition" {
   type    = string
   default = "task-definition-arn-here"
 }
+
+variable "force_new_deployment" {
+		type = bool 
+		default = true
+}
+

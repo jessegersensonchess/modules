@@ -24,10 +24,10 @@ resource "aws_ecs_task_definition" "definition" {
         "ENV" : "${var.environment}"
       },
       "environment" : [
-        {
+        merge({
           "name" : "NODE_ENV",
           "value" : "${var.node_env}"
-        }
+        }, var.container_environment)
         #        ,{
         #        "name": "DB_HOST",
         #        "value": "${var.database_hostname}"
