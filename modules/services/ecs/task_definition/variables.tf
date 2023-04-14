@@ -130,7 +130,7 @@ variable "requires_compatibilities" {
 
 variable "container_environment" {
   type    = list(string)
-  default = {}
+  default = {""}
 }
 
 variable "awslogs-group" {

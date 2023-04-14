@@ -35,7 +35,7 @@ variable "config-containerPath" {
 
 variable "container_environment" {
  	type = list(string)
- 	default = {}
+ 	default = {""}
  	}
 
 variable "logs-containerPath" {
