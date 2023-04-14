@@ -6,7 +6,8 @@ locals {
 }
 
 module "ecr" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecr?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecr?ref=v0.0.13"
+  #source        = "../../services/ecr"
   name         = local.service
   environment  = local.environment
   force_delete = var.force_delete
@@ -14,7 +15,7 @@ module "ecr" {
 }
 
 module "efs-access_point-bin" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point?ref=v0.0.13"
   #source        = "../../data-stores/efs/access_point"
   service       = local.service
   path          = "/bin"
@@ -23,7 +24,7 @@ module "efs-access_point-bin" {
 }
 
 module "efs-access_point-config" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point?ref=v0.0.13"
   #source        = "../../data-stores/efs/access_point"
   service       = local.service
   path          = "/config"
@@ -32,7 +33,8 @@ module "efs-access_point-config" {
 }
 
 module "efs-access_point-logs" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point?ref=v0.0.13"
+  # source        = "../../data-stores/efs/access_point"
   service       = local.service
   path          = "/logs"
   filesystem_id = module.efs.filesystem_id
@@ -40,7 +42,7 @@ module "efs-access_point-logs" {
 }
 
 module "efs" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/file_system?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/file_system?ref=v0.0.13"
   #source          = "../../data-stores/efs/file_system"
   service         = local.service
   environment     = local.environment
@@ -50,8 +52,8 @@ module "efs" {
 }
 
 module "listener-rule" {
-#  source           = "../../network/load-balancers/listener_rules"
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/network/load-balancers/listener_rules?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/network/load-balancers/listener_rules?ref=v0.0.13"
+  #source           = "../../network/load-balancers/listener_rules"
   order            = var.listener-rule-order
   target_group_arn = module.target-group.target_group["arn"]
   type             = var.listener-rule-type
@@ -61,7 +63,8 @@ module "listener-rule" {
 }
 
 module "service" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/service?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/service?ref=v0.0.13"
+  # source           = "../../network/load-balancers/listener_rules"
   cluster          = var.cluster
   desired_count    = var.desired_count
   name             = local.service
@@ -78,7 +81,7 @@ module "service" {
 }
 
 module "target-group" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/network/load-balancers/target_groups?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/network/load-balancers/target_groups?ref=v0.0.13"
   #source            = "../../network/load-balancers/target_groups"
   port              = var.target-group-port
   owner             = local.owner
@@ -90,7 +93,7 @@ module "target-group" {
 }
 
 module "task-definition" {
-  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition?ref=v0.0.11"
+  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition?ref=v0.0.13"
   image                  = "${module.ecr.aws_ecr_id.repository_url}:latest"
   app                    = local.service
   service                    = local.service
