@@ -1,4 +1,3 @@
-
 locals {
   container_name     = var.container_name
   containerPort      = var.containerPort
@@ -24,10 +23,14 @@ resource "aws_ecs_task_definition" "definition" {
         "ENV" : "${var.environment}"
       },
       "environment" : [
-        merge({
+        {
           "name" : "NODE_ENV",
           "value" : "${var.node_env}"
-        }, var.container_environment)
+        },
+        {
+          "name" : "PORT",
+          "value" : "${tostring(local.containerPort)}"
+        }
         #        ,{
         #        "name": "DB_HOST",
         #        "value": "${var.database_hostname}"

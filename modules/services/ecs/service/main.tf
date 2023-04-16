@@ -16,9 +16,12 @@ resource "aws_ecs_service" "service" {
 
   force_new_deployment = var.force_new_deployment
 
-  #triggers = {
-  #  redeployment = timestamp()
-  #}
+  triggers = {
+    #redeployment = timestamp()
+    container_port   = var.container_port
+    target_group_arn = var.target_group_arn
+	control_value = var.control_value
+  }
 
   deployment_circuit_breaker {
     enable   = var.deployment_circuit_breaker-enable

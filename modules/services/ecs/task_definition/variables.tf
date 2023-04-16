@@ -128,10 +128,10 @@ variable "requires_compatibilities" {
   default = ["FARGATE"]
 }
 
-variable "container_environment" {
-  type    = list(string)
-  default = {""}
-}
+#variable "container_environment" {
+#  type    = list(string)
+#  default = {""}
+#}
 
 variable "awslogs-group" {
   type    = string

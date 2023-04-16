@@ -33,10 +33,10 @@ variable "config-containerPath" {
   default = "/app/config/local"
 }
 
-variable "container_environment" {
- 	type = list(string)
- 	default = {""}
- 	}
+#variable "container_environment" {
+# 	type = list(string)
+# 	default = {"placeholder"="here"}
+# 	}
 
 variable "logs-containerPath" {
   type    = string

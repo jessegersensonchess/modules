@@ -118,3 +118,7 @@ variable "force_new_deployment" {
 		default = true
 }
 
+variable "control_value" {
+		type = string
+		default = ""
+}
