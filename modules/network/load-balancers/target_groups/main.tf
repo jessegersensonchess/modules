@@ -24,9 +24,9 @@ resource "aws_lb_target_group" "target_group" {
     unhealthy_threshold = var.health_check_threshold
   }
 
-    lifecycle {
-      create_before_destroy = true
-    }
+  lifecycle {
+    create_before_destroy = true
+  }
 
   stickiness {
     cookie_duration = var.stickiness_cookie_duration

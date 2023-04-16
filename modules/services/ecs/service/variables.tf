@@ -114,11 +114,11 @@ variable "task_definition" {
 }
 
 variable "force_new_deployment" {
-		type = bool 
-		default = true
+  type    = bool
+  default = true
 }
 
 variable "control_value" {
-		type = string
-		default = ""
+  type    = string
+  default = ""
 }

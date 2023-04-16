@@ -1,7 +1,7 @@
 resource "aws_lb" "lb" {
-  name                       = upper("alb-${var.service}")
-  desync_mitigation_mode     = "defensive"
-  drop_invalid_header_fields = "false"
+  name                             = upper("alb-${var.service}")
+  desync_mitigation_mode           = "defensive"
+  drop_invalid_header_fields       = "false"
   enable_cross_zone_load_balancing = "true"
   enable_deletion_protection       = var.enable_deletion_protection
   enable_http2                     = "true"
@@ -22,10 +22,10 @@ resource "aws_lb" "lb" {
     subnet_id = var.subnet_id_b
   }
   tags = {
-    Managed_By     = "Terraform"
-    Owner          = var.owner
-    Service        = var.service
-    Env            = var.environment
+    Managed_By = "Terraform"
+    Owner      = var.owner
+    Service    = var.service
+    Env        = var.environment
   }
 
 }

@@ -3,6 +3,26 @@ variable "health_check_path" {
   default = "my-health-check-path"
 }
 
+variable "health_check_healthy_threshold" {
+  type    = number
+  default = 3
+}
+
+variable "health_check_interval" {
+  type    = number
+  default = 5
+}
+
+variable "health_check_timeout" {
+  type    = number
+  default = 3
+}
+
+variable "health_check_threshold" {
+  type    = number
+  default = 2
+}
+
 variable "description" {
   type    = string
   default = "my-description"
@@ -174,7 +194,7 @@ variable "execution_role_arn" {
 }
 
 variable "force_new_deployment" {
-        type = bool
-        default = true
+  type    = bool
+  default = true
 }
 

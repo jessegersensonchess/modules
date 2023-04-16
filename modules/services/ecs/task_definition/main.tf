@@ -3,11 +3,11 @@ locals {
   containerPort      = var.containerPort
   hostPort           = var.hostPort
   execution_role_arn = var.execution_role_arn
-  owner	= var.owner
-  service = var.service
-  environment = var.environment
-	safe_to_delete = var.safe_to_delete
-	description = var.description
+  owner              = var.owner
+  service            = var.service
+  environment        = var.environment
+  safe_to_delete     = var.safe_to_delete
+  description        = var.description
 }
 
 resource "aws_cloudwatch_log_group" "log_group" {
@@ -58,23 +58,23 @@ resource "aws_ecs_task_definition" "definition" {
           "awslogs-stream-prefix" : "${var.awslogs-stream-prefix}"
         }
       },
-            "mountPoints": [
-                {
-                    "sourceVolume": "bin",
-                    "containerPath": "${var.bin-containerPath}",
-                    "readOnly": true
-                },
-                {
-                    "sourceVolume": "config",
-                    "containerPath": "${var.config-containerPath}",
-                    "readOnly": true
-                },
-                {
-                    "sourceVolume": "logs",
-                    "containerPath": "${var.logs-containerPath}",
-                    "readOnly": false
-                }
-            ], 
+      "mountPoints" : [
+        {
+          "sourceVolume" : "bin",
+          "containerPath" : "${var.bin-containerPath}",
+          "readOnly" : true
+        },
+        {
+          "sourceVolume" : "config",
+          "containerPath" : "${var.config-containerPath}",
+          "readOnly" : true
+        },
+        {
+          "sourceVolume" : "logs",
+          "containerPath" : "${var.logs-containerPath}",
+          "readOnly" : false
+        }
+      ],
       "name" : "${local.container_name}",
       "portMappings" : [
         {
@@ -106,13 +106,13 @@ resource "aws_ecs_task_definition" "definition" {
   }
 
   tags = {
-    APP = var.app
-    ENV = local.environment
-    Environment = local.environment
-    Owner = local.owner
-    Service = local.service
+    APP            = var.app
+    ENV            = local.environment
+    Environment    = local.environment
+    Owner          = local.owner
+    Service        = local.service
     safe_to_delete = local.safe_to_delete
-    Description = local.description
+    Description    = local.description
   }
 
   task_role_arn = local.execution_role_arn
