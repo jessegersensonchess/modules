@@ -6,7 +6,7 @@ resource "aws_lb" "lb" {
   enable_deletion_protection       = var.enable_deletion_protection
   enable_http2                     = "true"
   enable_waf_fail_open             = "false"
-  idle_timeout                     = "60"
+  idle_timeout                     = var.lb_idle_timeout # "60"
   internal                         = "false"
   ip_address_type                  = "ipv4"
   load_balancer_type               = "application"

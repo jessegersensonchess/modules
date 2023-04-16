@@ -55,7 +55,7 @@ variable "enable_execute_command" {
 
 variable "health_check_grace_period_seconds" {
   type    = number
-  default = 60
+  default = 30
 }
 
 variable "launch_type" {

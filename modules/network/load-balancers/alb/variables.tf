@@ -37,3 +37,8 @@ variable "environment" {
   type    = string
   default = "dev"
 }
+
+variable "lb_idle_timeout" {
+		type = number
+		default = 30
+}
