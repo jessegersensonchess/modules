@@ -7,6 +7,7 @@ locals {
 
 module "ecr" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecr"#?refv0.0.17"
+# ${path.module}
   source        = "../../services/ecr"
   name         = local.service
   environment  = local.environment
@@ -16,7 +17,7 @@ module "ecr" {
 
 module "efs-access_point-bin" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point"#?refv0.0.17"
-  ##  source        = "../../data-stores/efs/access_point"
+  source        = "../../data-stores/efs/access_point"
   service       = local.service
   path          = "/bin"
   filesystem_id = module.efs.filesystem_id
@@ -25,7 +26,7 @@ module "efs-access_point-bin" {
 
 module "efs-access_point-config" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point"#?refv0.0.17"
-  ##  source        = "../../data-stores/efs/access_point"
+  source        = "../../data-stores/efs/access_point"
   service       = local.service
   path          = "/config"
   filesystem_id = module.efs.filesystem_id
@@ -34,7 +35,7 @@ module "efs-access_point-config" {
 
 module "efs-access_point-logs" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point"#?refv0.0.17"
-  ##  source        = "../../data-stores/efs/access_point"
+  source        = "../../data-stores/efs/access_point"
   service       = local.service
   path          = "/logs"
   filesystem_id = module.efs.filesystem_id
@@ -43,7 +44,7 @@ module "efs-access_point-logs" {
 
 module "efs" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/file_system"#?refv0.0.17"
-  ##  source          = "../../data-stores/efs/file_system"
+  source          = "../../data-stores/efs/file_system"
   service         = local.service
   environment     = local.environment
   public_subnet_a = var.public_subnet_a
@@ -53,7 +54,7 @@ module "efs" {
 
 module "listener-rule" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/network/load-balancers/listener_rules"#?refv0.0.17"
-  ##  source           = "../../network/load-balancers/listener_rules"
+  source           = "../../network/load-balancers/listener_rules"
   order            = var.listener-rule-order
   target_group_arn = module.target-group.target_group["arn"]
   type             = var.listener-rule-type
@@ -77,7 +78,7 @@ output "aws_ecr_image-image_pushed_at" {
 
 module "service" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/service"#?refv0.0.17"
-  ##  source           = "../../services/ecs/service"
+  source           = "../../services/ecs/service"
   cluster              = var.cluster
   desired_count        = var.desired_count
   name                 = local.service
@@ -96,7 +97,7 @@ module "service" {
 
 module "target-group" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/network/load-balancers/target_groups"#?refv0.0.17"
-  ##  source            = "../../network/load-balancers/target_groups"
+  source            = "../../network/load-balancers/target_groups"
   port                           = var.target-group-port
   owner                          = local.owner
   environment                    = local.environment
@@ -112,7 +113,7 @@ module "target-group" {
 
 module "task-definition" {
   #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/task_definition"#?refv0.0.17"
-  ##  source            = "../../services/ecs/task_definition"
+  source            = "../../services/ecs/task_definition"
   image                  = "${module.ecr.aws_ecr_id.repository_url}:latest"
   app                    = local.service
   service                = local.service
