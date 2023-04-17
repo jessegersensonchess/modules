@@ -39,6 +39,6 @@ variable "environment" {
 }
 
 variable "lb_idle_timeout" {
-		type = number
-		default = 30
+  type    = number
+  default = 30
 }
