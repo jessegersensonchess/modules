@@ -6,6 +6,3 @@ output "url" {
   value = module.ecr.url # aws_ecr_repository.repository
 }
 
-output "arn" {
-  value = module.ecr.arn # aws_ecr_repository.repository
-}
