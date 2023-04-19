@@ -35,4 +35,4 @@ jobs:
     - name: nodejsscan scan
       run: |
         ls
-        docker run --rm opensecurity/njsscan scan .
+        docker run --rm -v$(pwd):/app opensecurity/njsscan scan /app
