@@ -14,4 +14,4 @@ jobs:
       run: |
         function this() { echo 'hi'; return 0 }
         this
-        echo 'bye'
+        echo 'bye.'
