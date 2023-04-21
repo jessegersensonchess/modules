@@ -1,8 +1,6 @@
 name: Testing
 
 on:
-  push:
-    branches: [ "master" ]
   workflow_dispatch:
 
 jobs:
@@ -14,9 +12,6 @@ jobs:
       uses: actions/checkout@v3
     - name: audit
       run: |
-        function this() { doesnot; echo 'hi'; return 0 }
+        function this() { echo 'hi'; return 0 }
         this
-        lkj
         echo 'bye'
-        #docker run --rm -v$(pwd):/app -w /app node:16-alpine npm audit
-        echo "finished npm audit"
