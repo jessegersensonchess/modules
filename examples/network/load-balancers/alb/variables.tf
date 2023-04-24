@@ -13,16 +13,6 @@ variable "enable_waf_fail_open" {
   default = false
 }
 
-variable "xff_header_processing_mode" {
-	type = string
-	default = "append"
-	}
-
-variable "enable_xff_client_port" {
-	type = bool
-	default = false
-}
-
 variable "desync_mitigation_mode" {
   type    = string
   default = "defensive"
