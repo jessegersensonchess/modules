@@ -27,6 +27,7 @@ resource "aws_ecs_cluster" "cluster" {
   }
 
   tags = {
+    Name        = var.cluster-name
     APP         = var.service
     Description = var.description
     Owner       = var.owner
