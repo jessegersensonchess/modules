@@ -21,7 +21,7 @@ resource "aws_lb" "lb" {
   subnet_mapping {
     subnet_id = var.subnet_id_b
   }
-  
+
   tags = {
     Managed_By = var.managed_by
     Owner      = var.owner
