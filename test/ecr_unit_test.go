@@ -5,9 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	//	"github.com/gruntwork-io/terratest/modules/random"
+	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/gruntwork-io/terratest/tree/master/modules/random"
 )
 
 // An example of a unit test for the Terraform module in examples/ecr
