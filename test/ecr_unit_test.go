@@ -2,31 +2,20 @@ package test
 
 import (
 	"fmt"
-	"math/rand"
 	"strings"
-
-	//	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 	"testing"
 
+	//	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	// "time"
+	"github.com/gruntwork-io/terratest/tree/master/modules/random"
 )
-
-func randString(length int) string {
-	const charset = "abcdefghijklmnopqrstuvwxyz"
-	b := make([]byte, length)
-	for i := range b {
-		b[i] = charset[rand.Intn(len(charset))]
-	}
-	return string(b)
-}
 
 // An example of a unit test for the Terraform module in examples/ecr
 func TestEcrUnit(t *testing.T) {
 	t.Parallel()
 
 	// A unique ID we can use to namespace all our resource names and ensure they don't clash across parallel tests
-	uniqueId := randString(8) //# random.UniqueId()
+	uniqueId := strings.ToLower(random.UniqueId())
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -63,11 +52,5 @@ func validateEcr(t *testing.T, terraformOptions *terraform.Options) {
 
 	}
 
-	// Verify the app returns a 200 OK with the text "Hello, World!"
-	//	expectedStatus := 200
-	//	expectedBody := "Hello, World!"
-	//	maxRetries := 10
-	//	timeBetweenRetries := 3 * time.Second
-	//	http_helper.HttpGetWithRetry(t, url, nil, expectedStatus, expectedBody, maxRetries, timeBetweenRetries)
 	fmt.Println(url)
 }

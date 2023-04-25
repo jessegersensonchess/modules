@@ -3,30 +3,19 @@ package test
 import (
 	"fmt"
 	"strings"
-
-	//	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 	"testing"
 
+	//"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	// "time"
+	"github.com/gruntwork-io/terratest/tree/master/modules/random"
 )
-
-//func randString(length int) string {
-//	const charset = "abcdefghijklmnopqrstuvwxyz"
-//	b := make([]byte, length)
-//	for i := range b {
-//		b[i] = charset[rand.Intn(len(charset))]
-//	}
-//	return string(b)
-//}
 
 // An example of a unit test for the Terraform module in examples/ecr
 func TestUnitEcsCluster(t *testing.T) {
 	t.Parallel()
 
 	// A unique ID we can use to namespace all our resource names and ensure they don't clash across parallel tests
-	uniqueId := randString(8) //# random.UniqueId()
-
+	uniqueId := strings.ToLower(random.UniqueId())
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../examples/services/ecs/cluster",

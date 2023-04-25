@@ -30,17 +30,21 @@ locals {
 }
 
 
-module "cluster" {
-  #  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/cluster?ref=v0.0.20"
-  source                          = "../../../../modules/services/ecs/cluster"
-  description                     = "${local.environment} cluster for the ${local.service} service"
-  service                         = local.service
-  cluster-name                    = local.service
-  environment                     = local.environment
-  service-discovery-namespace-arn = local.environment
-  owner                           = local.owner
-  containerInsights-value         = local.containerInsights-value
-  capacity-providers              = local.capacity-providers
-  default-capacity-provider       = local.default-capacity-provider
+module "efs-access_point-bin" {
+  #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/access_point"#?refv0.0.17"
+  source        = "../../../../modules/data-stores/efs/access_point"
+  service       = local.service
+  path          = "/bin"
+  filesystem_id = module.efs.filesystem_id
+  environment   = local.environment
 }
 
+module "efs" {
+  #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/file_system"#?refv0.0.17"
+  source          = "../../data-stores/efs/file_system"
+  service         = local.service
+  environment     = local.environment
+  public_subnet_a = var.public_subnet_a
+  public_subnet_b = var.public_subnet_b
+  security_groups = var.security_groups
+}

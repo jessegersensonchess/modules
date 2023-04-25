@@ -11,7 +11,7 @@ import (
 )
 
 // An example of a unit test for the Terraform module in examples/ecr
-func TestUnitVpc(t *testing.T) {
+func TestUnitEfs(t *testing.T) {
 	t.Parallel()
 
 	// A unique ID we can use to namespace all our resource names and ensure they don't clash across parallel tests
@@ -19,13 +19,12 @@ func TestUnitVpc(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
-		TerraformDir: "../examples/network/vpc",
+		TerraformDir: "../examples/data-stores/efs/file_system",
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"base_subnet":      "10.88",
-			"region":           "eu-west-2",
-			"network_basename": fmt.Sprintf("mynetwork-%s", uniqueId),
+			"owner":   "terratest",
+			"service": fmt.Sprintf("myservice-%s", uniqueId),
 		},
 	}
 
@@ -36,15 +35,17 @@ func TestUnitVpc(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Check that the app is working as expected
-	validateVpc(t, terraformOptions)
+	validateEfs(t, terraformOptions, uniqueId)
 }
 
 // Validate the "Hello, World" app is working
-func validateVpc(t *testing.T, terraformOptions *terraform.Options) {
+func validateEfs(t *testing.T, terraformOptions *terraform.Options, uniqueId string) {
 	// Run `terraform output` to get the values of output variables
+	encrypted := terraform.Output(t, terraformOptions, "encrypted")
 	output := terraform.Output(t, terraformOptions, "output")
-	if len(output) > 0 {
-		fmt.Sprintf("SUCCESS: output = %v", output)
+	//	output = strings.ToLower(output)
+	if encrypted == "true" {
+		fmt.Sprintf("SUCCESS: encrypted = %v, output = %v, uniqueId = %v\n", encrypted, output, uniqueId)
 		t.Logf("Success ")
 	} else {
 		fmt.Println("------------------- no ----------------")
