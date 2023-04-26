@@ -18,7 +18,7 @@ resource "aws_ecs_cluster" "cluster" {
   }
 
   service_connect_defaults {
-    namespace = aws_service_discovery_http_namespace.namespace.arn
+    namespace = "${var.cluster-name}-${aws_service_discovery_http_namespace.namespace.arn}"
   }
 
   setting {
