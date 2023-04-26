@@ -10,7 +10,7 @@ import (
 )
 
 // An example of a unit test for the Terraform module in examples/ecr
-func TestEcrUnit(t *testing.T) {
+func TestUnitEcr(t *testing.T) {
 	t.Parallel()
 
 	// A unique ID we can use to namespace all our resource names and ensure they don't clash across parallel tests
