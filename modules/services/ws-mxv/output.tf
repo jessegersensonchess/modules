@@ -1,5 +1,5 @@
 output "ecr-repository_url" {
-  value = module.ecr.aws_ecr_id.repository_url
+  value = module.ecr.url
 }
 
 output "efs-filesystem-id" {
