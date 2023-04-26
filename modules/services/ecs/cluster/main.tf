@@ -18,7 +18,7 @@ resource "aws_ecs_cluster" "cluster" {
   }
 
   service_connect_defaults {
-    namespace = "${var.cluster-name}-${aws_service_discovery_http_namespace.namespace.arn}"
+    namespace = aws_service_discovery_http_namespace.namespace.arn
   }
 
   setting {
@@ -41,6 +41,7 @@ resource "aws_service_discovery_http_namespace" "namespace" {
   name        = "${var.service-discovery-namespace-arn}-${var.service}"
   description = "${var.environment} namespace for service ${var.service} in cluster ${var.cluster-name}"
   tags = {
+  Name         = "${var.service-discovery-namespace-arn}-${var.service}"
     Created_By  = var.created-by
     Environment = var.environment
     Owner       = var.owner
