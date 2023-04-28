@@ -17,3 +17,20 @@ variable "validation-method" {
   type    = string
   default = "EMAIL"
 }
+
+variable "description" {
+  type    = string
+  default = "description"
+}
+
+variable "service" {
+  type    = string
+  default = "service"
+}
+
+variable "environment" {
+  type    = string
+  default = "env"
+}
+
+
