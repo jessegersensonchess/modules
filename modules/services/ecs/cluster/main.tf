@@ -34,19 +34,17 @@ resource "aws_ecs_cluster" "cluster" {
     Created_By  = var.created-by
     Environment = var.environment
   }
-
 }
 
 resource "aws_service_discovery_http_namespace" "namespace" {
-  #name        = "${var.service-discovery-namespace-arn}-${var.service}"
   name        = "${var.environment}-${var.service}"
   description = "${var.environment} namespace for service ${var.service} in cluster ${var.cluster-name}"
   tags = {
-    #Name        = "${var.service-discovery-namespace-arn}-${var.service}"
-  Name        = "${var.environment}-${var.service}"
+    Name        = "${var.environment}-${var.service}"
     Created_By  = var.created-by
     Environment = var.environment
     Owner       = var.owner
     Managed_By  = var.managed-by
   }
 }
+

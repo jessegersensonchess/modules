@@ -10,8 +10,8 @@ resource "aws_lb" "lb" {
   internal                         = var.internal
   ip_address_type                  = var.ip_address_type
   load_balancer_type               = var.load_balancer_type
-#  xff_header_processing_mode       = var.xff_header_processing_mode
-#  enable_xff_client_port           = var.enable_xff_client_port
+  #  xff_header_processing_mode       = var.xff_header_processing_mode
+  #  enable_xff_client_port           = var.enable_xff_client_port
 
   preserve_host_header = var.preserve_host_header
   security_groups      = var.security-groups
