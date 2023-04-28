@@ -14,11 +14,17 @@ resource "aws_acm_certificate" "ssl-certificate" {
 
   tags = {
     name = var.domain-name
+    Description = var.description
+    Environment = var.environment
+    Service = var.service
   }
 
   tags_all = {
     name = var.domain-name
-  }
+    Description = var.description
+    Environment = var.environment
+    Service = var.service
+   }
 
   validation_method = var.validation-method
 }
