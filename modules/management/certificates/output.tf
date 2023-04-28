@@ -6,3 +6,7 @@ output "ssl-certificate-domain-name" {
 output "arn" {
   value = aws_acm_certificate.ssl-certificate.arn
 }
+
+output "id" {
+  value = aws_acm_certificate.ssl-certificate.id
+}
