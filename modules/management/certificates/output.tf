@@ -10,3 +10,7 @@ output "arn" {
 output "id" {
   value = aws_acm_certificate.ssl-certificate.id
 }
+
+output "status" {
+  value = aws_acm_certificate.ssl-certificate.status
+}
