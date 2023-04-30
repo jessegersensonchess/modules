@@ -44,7 +44,8 @@ func validateAlb(t *testing.T, terraformOptions *terraform.Options, uniqueId str
 	output := terraform.Output(t, terraformOptions, "dns_name")
 	output = strings.ToLower(output)
 	if strings.Contains(output, uniqueId) {
-		fmt.Sprintf("SUCCESS: output = %v, uniqueId = %v", output, uniqueId)
+		fmt.Println("\n\n\n\tvalidateAlb SUCCESS. dns_name (" + output + ") includes uniqueId")
+		fmt.Sprintf("validateAlb SUCCESS: output = %v, uniqueId = %v\n\n\n", output, uniqueId)
 		t.Logf("Success ")
 	} else {
 		fmt.Println("------------------- no ----------------")

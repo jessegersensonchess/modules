@@ -43,10 +43,11 @@ func validateVpc(t *testing.T, terraformOptions *terraform.Options) {
 	// Run `terraform output` to get the values of output variables
 	output := terraform.Output(t, terraformOptions, "output")
 	if len(output) > 0 {
-		fmt.Sprintf("SUCCESS: output = %v", output)
+		fmt.Println("\n\n\nSUCCESS: validateVpc. len(output) > 0. output=" + output)
+		fmt.Sprintf("SUCCESS: validateVpc: output = %v\n\n\n", output)
 		t.Logf("Success ")
 	} else {
-		fmt.Println("------------------- no ----------------")
+		fmt.Println("------------------- validateVpc failed ----------------")
 		t.Errorf("Failed ! got output = %v", output)
 
 	}

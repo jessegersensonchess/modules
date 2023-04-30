@@ -37,17 +37,17 @@ func TestUnitEfs(t *testing.T) {
 	validateEfs(t, terraformOptions, uniqueId)
 }
 
-// Validate the "Hello, World" app is working
+// Validate
 func validateEfs(t *testing.T, terraformOptions *terraform.Options, uniqueId string) {
 	// Run `terraform output` to get the values of output variables
 	encrypted := terraform.Output(t, terraformOptions, "encrypted")
 	output := terraform.Output(t, terraformOptions, "output")
-	//	output = strings.ToLower(output)
 	if encrypted == "true" {
-		fmt.Sprintf("SUCCESS: encrypted = %v, output = %v, uniqueId = %v\n", encrypted, output, uniqueId)
-		t.Logf("Success ")
+		fmt.Println("\n\n\nvalidateEfs yes, encrypted == true \n\n\n\n=========== ")
+		fmt.Sprintf("SUCCESS: validateEfs: encrypted = %v, output = %v, uniqueId = %v\n", encrypted, output, uniqueId)
+		//t.Logf("Success ")
 	} else {
-		fmt.Println("------------------- no ----------------")
+		fmt.Println("------------------- validateEfs: failed ----------------")
 		t.Errorf("Failed ! got output = %v", output)
 
 	}

@@ -40,11 +40,11 @@ func validateEcsCluster(t *testing.T, terraformOptions *terraform.Options, uniqu
 	// Run `terraform output` to get the values of output variables
 	output := terraform.Output(t, terraformOptions, "output")
 	if strings.Contains(output, uniqueId) {
-		fmt.Println("\n\n\nyes, output contains uniqueId \n\n\n\n=========== ")
+		fmt.Println("\n\n\nvalidateEcsCluster yes, output contains uniqueId \n\n\n\n=========== ")
 		fmt.Sprintf("output = %v, uniqueId = %v\n", output, uniqueId)
 		t.Logf("Success !")
 	} else {
-		fmt.Println("------------------- no, output does not contain uniqueId ----------------")
+		fmt.Println("------------------- validateEcsCluster: no, output does not contain uniqueId ----------------")
 		fmt.Sprintf("output = %v, uniqueId = %v\n", output, uniqueId)
 		t.Errorf("Failed ! got %v", output)
 

@@ -42,7 +42,7 @@ func validateEcr(t *testing.T, terraformOptions *terraform.Options) {
 	url := terraform.Output(t, terraformOptions, "url")
 	name := terraform.Output(t, terraformOptions, "name")
 	if strings.Contains(url, name) {
-		fmt.Println("\n\n\nyes, url contains name \n\n\n\n=========== ")
+		fmt.Println("\n\n\nvalidateEcr: Success: yes, url contains name \n\n\n\n=========== ")
 		fmt.Sprintf("url = %v, name = %v\n", url, name)
 		t.Logf("Success !")
 	} else {
