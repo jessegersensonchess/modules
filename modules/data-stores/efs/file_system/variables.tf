@@ -49,8 +49,9 @@ variable "filesystem_id" {
 }
 
 variable "owner" {
-  type    = string
-  default = "Jesse Gersenson"
+  type        = string
+  default     = "Jesse Gersenson"
+  description = "owner of this EFS"
 }
 
 variable "environment" {
@@ -59,8 +60,9 @@ variable "environment" {
 }
 
 variable "service" {
-  type    = string
-  default = "ws-mxv"
+  type        = string
+  default     = "ws-mxv"
+  description = "service which created this EFS"
 }
 
 variable "folder_name" {

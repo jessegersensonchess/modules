@@ -1,11 +1,14 @@
 variable "force_delete" {
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
+  description = "allow container registry to be deleted even if it contains images"
+
 }
 
 variable "name" {
-  type    = string
-  default = "name-missing"
+  type        = string
+  default     = "name-missing"
+  description = "name of the ECR repository"
 }
 
 variable "image_tag_mutability" {
