@@ -22,8 +22,9 @@ variable "encryption_type" {
 }
 
 variable "scan_on_push" {
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
+  description = "bool run security scan when image is pushed"
 }
 
 variable "environment" {
