@@ -20,5 +20,5 @@ jobs:
 
       - name: Terraform Run
         run: |
-        terraform fmt -recursive -check
+          terraform fmt -recursive -check
 
