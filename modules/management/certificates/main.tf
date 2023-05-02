@@ -1,4 +1,4 @@
-resource "aws_acm_certificate" "ssl-certificate" {
+ resource "aws_acm_certificate" "ssl-certificate" {
   domain_name   = var.domain-name
   key_algorithm = var.key-algorithm
 
