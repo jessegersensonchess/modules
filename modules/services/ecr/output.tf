@@ -1,4 +1,4 @@
-output "aws_ecr_repository" {
+output "output" {
   value = aws_ecr_repository.repository
 }
 

@@ -4,14 +4,15 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region # "eu-west-2"
+  region = var.region
 }
 
 module "ecr" {
-  source       = "../../../modules/services/ecr"
-  name         = var.name #"myname" # local.service
-  environment  = "dev"    # local.environment
-  force_delete = true     # var.force_delete
-  scan_on_push = false    # var.scan_on_push
+  source               = "../../../modules/services/ecr"
+  name                 = var.name
+  environment          = var.environment
+  force_delete         = var.force_delete
+  scan_on_push         = var.scan_on_push
+  encryption_type      = var.encryption_type
+  image_tag_mutability = var.image_tag_mutability
 }
-

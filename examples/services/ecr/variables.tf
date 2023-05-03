@@ -21,15 +21,15 @@ variable "image_tag_mutability" {
 
 variable "encryption_type" {
   type    = string
-  default = "AES256"
+  default = "KMS" # "AES256"
 }
 
 variable "scan_on_push" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "environment" {
   type    = string
-  default = "dev"
+  default = "my-env"
 }

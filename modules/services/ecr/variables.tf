@@ -31,3 +31,9 @@ variable "environment" {
   type    = string
   default = "dev"
 }
+
+variable "managed_by" {
+  type    = string
+  default = "Terraform"
+}
+
