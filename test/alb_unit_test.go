@@ -63,7 +63,7 @@ func validateAlb(t *testing.T, terraformOptions *terraform.Options, uniqueId str
 	ip_address_type := terraform.Output(t, terraformOptions, "ip_address_type")
 	idle_timeout := terraform.Output(t, terraformOptions, "idle_timeout")
 	enable_http2 := terraform.Output(t, terraformOptions, "enable_http2")
-	//enable_deletion_protection := terraform.Output(t, terraformOptions, "enable_deletion_protection")
+	enable_deletion_protection := terraform.Output(t, terraformOptions, "enable_deletion_protection")
 	load_balancer_type := terraform.Output(t, terraformOptions, "load_balancer_type")
 
 	dns_name = strings.ToLower(dns_name)
@@ -83,9 +83,9 @@ func validateAlb(t *testing.T, terraformOptions *terraform.Options, uniqueId str
 		t.Errorf("ERROR: load_balancer_type=application, got %v", load_balancer_type)
 	}
 
-	//	if enable_deletion_protection != "true" {
-	//		t.Errorf("ERROR: expected enable_deletion_protection=true, got %v", enable_deletion_protection)
-	//	}
+	if enable_deletion_protection != "false" {
+		t.Errorf("ERROR: expected enable_deletion_protection=false, got %v", enable_deletion_protection)
+	}
 
 	if enable_http2 != "true" {
 		t.Errorf("ERROR: expected enable_http2=true, got %v", enable_http2)
