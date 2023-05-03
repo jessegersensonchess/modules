@@ -1,3 +1,8 @@
+variable "region" {
+  type    = string
+  default = "eu-west-2"
+}
+
 variable "ip_address_type" {
   type    = string
   default = "ipv4"

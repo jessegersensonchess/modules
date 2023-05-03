@@ -18,3 +18,7 @@ output "vpc_id" {
   value = aws_vpc.vpc.id
 }
 
+output "output" {
+  value = aws_vpc.vpc
+}
+

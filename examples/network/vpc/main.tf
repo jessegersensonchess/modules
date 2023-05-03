@@ -4,14 +4,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region # "eu-west-2"
-}
-
-locals {
-  default_cidr = "0.0.0.0/0"
-  base_subnet  = var.base_subnet
-  az_a         = "${data.aws_region.current.name}a"
-  az_b         = "${data.aws_region.current.name}b"
+  region = var.region
 }
 
 data "aws_region" "current" {
@@ -19,11 +12,12 @@ data "aws_region" "current" {
 }
 
 module "vpc" {
-  #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/network/vpc?ref=v0.0.20"
-  source             = "../../../modules/network/vpc"
-  region             = var.region
-  availability_zones = ["${var.region}a", "${var.region}b"]
-  network_basename   = var.network_basename
-  environment        = var.environment
-  base_subnet        = local.base_subnet
+  source                               = "../../../modules/network/vpc"
+  region                               = var.region
+  availability_zones                   = ["${var.region}a", "${var.region}b"]
+  network_basename                     = var.network_basename
+  environment                          = var.environment
+  base_subnet                          = var.base_subnet
+  enable_network_address_usage_metrics = var.enable_network_address_usage_metrics
+  managed_by                           = var.managed_by
 }

@@ -25,10 +25,10 @@ resource "aws_lb" "lb" {
   }
 
   tags = {
-    Managed_By = var.managed_by
-    Owner      = var.owner
-    Service    = var.service
-    Env        = var.environment
+    Managed_By  = var.managed_by
+    Owner       = var.owner
+    Service     = var.service
+    Environment = var.environment
   }
 
 }

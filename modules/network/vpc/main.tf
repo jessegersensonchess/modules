@@ -27,7 +27,7 @@ resource "aws_vpc" "vpc" {
   tags = {
     Name        = "${local.name}-VPC"
     Environment = var.environment
-    Managed_By  = "Terraform"
+    Managed_By  = var.managed_by
   }
 }
 

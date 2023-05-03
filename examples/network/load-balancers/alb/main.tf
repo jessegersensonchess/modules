@@ -4,7 +4,7 @@ terraform {
 }
 
 provider "aws" {
-  region = local.region # "eu-west-2"
+  region = var.region # "eu-west-2"
 }
 
 locals {
@@ -12,7 +12,7 @@ locals {
   base_subnet      = "10.87"
   az_a             = "${data.aws_region.current.name}a"
   az_b             = "${data.aws_region.current.name}b"
-  region           = "eu-west-2"
+  region           = var.region
   network_basename = "terratest-lb"
 }
 
@@ -36,5 +36,12 @@ module "load-balancer" {
   subnet_id_a                = module.vpc.public_subnet_a
   subnet_id_b                = module.vpc.public_subnet_b
   security-groups            = []
-  enable_deletion_protection = false
+  lb_idle_timeout            = var.lb_idle_timeout
+  environment                = var.environment
+  drop_invalid_header_fields = var.drop_invalid_header_fields
+  enable_deletion_protection = var.enable_deletion_protection
+  preserve_host_header       = var.preserve_host_header
+  managed_by                 = var.managed_by
+  owner                      = var.owner
+
 }

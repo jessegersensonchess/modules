@@ -42,6 +42,11 @@ variable "enable_network_address_usage_metrics" {
   default = false
 }
 
+variable "managed_by" {
+  type    = string
+  default = "Terraform"
+}
+
 variable "instance_tenancy" {
   type    = string
   default = "default"

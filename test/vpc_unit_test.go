@@ -22,9 +22,14 @@ func TestUnitVpc(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"base_subnet":      "10.88",
-			"region":           "eu-west-2",
-			"network_basename": fmt.Sprintf("mynetwork-%s", uniqueId),
+			"base_subnet":                          "10.88",
+			"region":                               "eu-west-2",
+			"network_basename":                     fmt.Sprintf("mynetwork-%s", uniqueId),
+			"environment":                          "myenv",
+			"enable_dns_hostnames":                 "true",
+			"enable_dns_support":                   "true",
+			"enable_network_address_usage_metrics": "true",
+			"managed_by":                           "terratest",
 		},
 	}
 
@@ -41,21 +46,54 @@ func TestUnitVpc(t *testing.T) {
 // Validate the "Hello, World" app is working
 func validateVpc(t *testing.T, terraformOptions *terraform.Options) {
 	// Run `terraform output` to get the values of output variables
-	output := terraform.Output(t, terraformOptions, "output")
-	if len(output) > 0 {
-		fmt.Println("\n\n\nSUCCESS: validateVpc. len(output) > 0. output=" + output)
-		fmt.Sprintf("SUCCESS: validateVpc: output = %v\n\n\n", output)
-		t.Logf("Success ")
-	} else {
-		fmt.Println("------------------- validateVpc failed ----------------")
-		t.Errorf("Failed ! got output = %v", output)
 
+	// sample test.
+	// todo:
+	// 1. add generic output to module
+	// 2. add tests for each piece of output
+
+	// EXAMPLE
+	//	if image_tag_mutability != "MUTABLE" {
+	//		t.Errorf("ERROR: expected image_tag_mutability=MUTABLE, got %v", image_tag_mutability)
+	//	}
+	vpc_id := terraform.Output(t, terraformOptions, "vpc_id")
+	base_subnet := terraform.Output(t, terraformOptions, "cidr_block")
+	enable_network_address_usage_metrics := terraform.Output(t, terraformOptions, "enable_network_address_usage_metrics")
+	enable_dns_support := terraform.Output(t, terraformOptions, "enable_dns_support")
+	enable_dns_hostnames := terraform.Output(t, terraformOptions, "enable_dns_hostnames")
+	environment := terraform.Output(t, terraformOptions, "environment")
+	name := terraform.Output(t, terraformOptions, "name")
+	managed_by := terraform.Output(t, terraformOptions, "managed_by")
+
+	if !strings.Contains(base_subnet, "10.88") {
+		t.Errorf("ERROR: expected base_subnet=10.88, got %v", base_subnet)
 	}
 
-	// Verify the app returns a 200 OK with the text "Hello, World!"
-	//	expectedStatus := 200
-	//	expectedBody := "Hello, World!"
-	//	maxRetries := 10
-	//	timeBetweenRetries := 3 * time.Second
-	//	http_helper.HttpGetWithRetry(t, url, nil, expectedStatus, expectedBody, maxRetries, timeBetweenRetries)
+	if enable_network_address_usage_metrics != "true" {
+		t.Errorf("ERROR: expected enable_network_address_usage_metrics=true, got %v", enable_network_address_usage_metrics)
+	}
+	if enable_dns_support != "true" {
+		t.Errorf("ERROR: expected enable_dns_support=true, got %v", enable_dns_support)
+	}
+
+	if enable_dns_hostnames != "true" {
+		t.Errorf("ERROR: expected enable_dns_hostnames=true, got %v", enable_dns_hostnames)
+	}
+
+	if environment != "myenv" {
+		t.Errorf("ERROR: expected environment=myenv, got %v", environment)
+	}
+
+	if managed_by != "terratest" {
+		t.Errorf("ERROR: expected managed_by=terratest, got %v", managed_by)
+	}
+
+	if !strings.Contains(name, "mynetwork") {
+		t.Errorf("ERROR: expected name=mynetwork-*, got %v", name)
+	}
+
+	if !(len(vpc_id) > 0) {
+		t.Errorf("ERROR: expected len(vpc_id) > 0, got %v (%v)", len(vpc_id), vpc_id)
+	}
+
 }

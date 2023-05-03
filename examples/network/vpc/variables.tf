@@ -62,6 +62,11 @@ variable "public_subnet_a_map_public_ip_on_launch" {
   default = true
 }
 
+variable "managed_by" {
+  type    = string
+  default = "Terraform"
+}
+
 variable "public_subnet_b_map_public_ip_on_launch" {
   type    = bool
   default = true
