@@ -16,6 +16,5 @@ resource "aws_ecr_repository" "repository" {
     Environment = var.environment
     Managed_By  = var.managed_by
   }
-
 }
 
