@@ -22,8 +22,11 @@ func TestUnitEfs(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"owner":   "terratest",
-			"service": fmt.Sprintf("myservice-%s", uniqueId),
+			"service":     fmt.Sprintf("myservice-%s", uniqueId),
+			"environment": "friendly",
+			"owner":       "king",
+			"encrypted":   "false",
+			"managed_by":  "TerraTest",
 		},
 	}
 
@@ -37,25 +40,38 @@ func TestUnitEfs(t *testing.T) {
 	validateEfs(t, terraformOptions, uniqueId)
 }
 
+func Expect(t *testing.T, testName string, want string, got string) bool {
+	if want == got {
+		fmt.Printf("Test %v: %v == %v: %v\n", testName, want, got, "true")
+		return true
+	}
+	fmt.Printf("Test %v: %v == %v: %v\n", testName, want, got, "false")
+	t.Errorf("ERROR: %v, expected %v got %v", testName, want, got)
+	return want == got
+}
+
 // Validate
 func validateEfs(t *testing.T, terraformOptions *terraform.Options, uniqueId string) {
 	// Run `terraform output` to get the values of output variables
 	encrypted := terraform.Output(t, terraformOptions, "encrypted")
-	output := terraform.Output(t, terraformOptions, "output")
-	if encrypted == "true" {
-		fmt.Println("\n\n\nvalidateEfs yes, encrypted == true \n\n\n\n=========== ")
-		fmt.Sprintf("SUCCESS: validateEfs: encrypted = %v, output = %v, uniqueId = %v\n", encrypted, output, uniqueId)
-		//t.Logf("Success ")
-	} else {
-		fmt.Println("------------------- validateEfs: failed ----------------")
-		t.Errorf("Failed ! got output = %v", output)
+	dns_name := terraform.Output(t, terraformOptions, "dns_name")
+	owner := terraform.Output(t, terraformOptions, "owner")
+	service := terraform.Output(t, terraformOptions, "service")
+	environment := terraform.Output(t, terraformOptions, "environment")
+	managed_by := terraform.Output(t, terraformOptions, "managed_by")
+	fmt.Println("dns_name = ", dns_name)
 
+	Expect(t, "managed_by", managed_by, "TerraTest")
+	Expect(t, "owner", owner, "king")
+	Expect(t, "environment", environment, "friendly")
+	Expect(t, "encrypted", encrypted, "false")
+
+	//	if encrypted != "true" {
+	//		t.Errorf("ERROR: expected encrypted = true , got %v", encrypted)
+	//	}
+
+	if !strings.Contains(service, uniqueId) {
+		t.Errorf("ERROR: expected service uniqueId, got %v, %v", service, uniqueId)
 	}
 
-	// Verify the app returns a 200 OK with the text "Hello, World!"
-	//	expectedStatus := 200
-	//	expectedBody := "Hello, World!"
-	//	maxRetries := 10
-	//	timeBetweenRetries := 3 * time.Second
-	//	http_helper.HttpGetWithRetry(t, url, nil, expectedStatus, expectedBody, maxRetries, timeBetweenRetries)
 }

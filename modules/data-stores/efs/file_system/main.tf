@@ -7,7 +7,7 @@ resource "aws_efs_file_system" "filesystem" {
     Name           = var.service
     Owner          = var.owner
     Service        = var.service
-    Env            = var.environment
+    Environment    = var.environment
     safe_to_delete = var.safe_to_delete
     Managed_By     = var.managed_by
   }

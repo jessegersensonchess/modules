@@ -38,5 +38,10 @@ variable "managed_by" {
   default = "Terraform"
 }
 
+variable "owner" {
+  type    = string
+  default = "owner"
+}
+
 
 

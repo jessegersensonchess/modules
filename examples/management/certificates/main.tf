@@ -14,12 +14,12 @@ module "ssl-certificate" {
   environment = var.environment
   service     = var.service
   managed_by  = var.managed_by
+  owner       = var.owner
 
   domain-name       = var.domain-name
   validation-method = var.validation-method
 
   key_algorithm = var.key_algorithm
-  #owner                      = var.owner
 
 }
 

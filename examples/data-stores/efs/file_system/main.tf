@@ -7,16 +7,6 @@ provider "aws" {
   region = var.region
 }
 
-module "efs" {
-  #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/data-stores/efs/file_system"#?refv0.0.17"
-  source          = "../../../../modules/data-stores/efs/file_system"
-  service         = var.service
-  environment     = var.environment
-  public_subnet_a = module.vpc.public_subnet_a
-  public_subnet_b = module.vpc.public_subnet_b
-  security_groups = [] #var.security_groups
-}
-
 locals {
   default_cidr = "0.0.0.0/0"
   base_subnet  = var.base_subnet
@@ -29,7 +19,6 @@ data "aws_region" "current" {
 }
 
 module "vpc" {
-  #source = "git::https://github.com/jessegersensonchess/terraform.git//modules/network/vpc?ref=v0.0.20"
   source             = "../../../../modules/network/vpc"
   region             = var.region
   availability_zones = ["${var.region}a", "${var.region}b"]
@@ -37,3 +26,21 @@ module "vpc" {
   environment        = var.environment
   base_subnet        = local.base_subnet
 }
+
+module "efs" {
+  source           = "../../../../modules/data-stores/efs/file_system"
+  service          = var.service
+  environment      = var.environment
+  owner            = var.owner
+  encrypted        = var.encrypted
+  performance_mode = var.performance_mode
+  throughput_mode  = var.throughput_mode
+  managed_by       = var.managed_by
+  folder_name      = var.folder_name
+
+  public_subnet_a = module.vpc.public_subnet_a
+  public_subnet_b = module.vpc.public_subnet_b
+  security_groups = [] #var.security_groups
+}
+
+

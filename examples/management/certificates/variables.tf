@@ -38,6 +38,11 @@ variable "environment" {
   default = "env"
 }
 
+variable "owner" {
+  type    = string
+  default = "owner"
+}
+
 variable "managed_by" {
   type    = string
   default = "Terraform"
