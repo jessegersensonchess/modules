@@ -14,3 +14,7 @@ output "id" {
 output "status" {
   value = aws_acm_certificate.ssl-certificate.status
 }
+
+#output "output" {
+#  value = aws_acm_certificate.ssl-certificate
+#}

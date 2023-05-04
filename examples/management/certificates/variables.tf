@@ -1,3 +1,8 @@
+variable "region" {
+  type    = string
+  default = "eu-west-2"
+}
+
 variable "domain-name" {
   type    = string
   default = "mydomain.name"
@@ -15,7 +20,7 @@ variable "logging-preference" {
 
 variable "validation-method" {
   type    = string
-  default = "EMAIL"
+  default = "DNS"
 }
 
 variable "description" {
@@ -37,6 +42,4 @@ variable "managed_by" {
   type    = string
   default = "Terraform"
 }
-
-
 
