@@ -1,4 +1,5 @@
-module github.com/gruntwork-io/infrastructure-as-code-testing-talk
+//module github.com/gruntwork-io/infrastructure-as-code-testing-talk
+module github.com/jessegersenson/terraform
 
 go 1.13
 
