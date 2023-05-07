@@ -6,6 +6,10 @@ output "efs-filesystem-id" {
   value = module.efs.filesystem_id
 }
 
+output "output" {
+  value = module.efs.output
+}
+
 output "efs-filesystem" {
   value = module.efs.output
 }
