@@ -7,7 +7,7 @@ output "efs-filesystem-id" {
 }
 
 output "efs-filesystem" {
-  value = module.efs.filesystem
+  value = module.efs.output
 }
 
 output "efs-accesspoint-bin" {
