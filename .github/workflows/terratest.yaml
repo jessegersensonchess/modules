@@ -21,9 +21,8 @@ jobs:
           KEY: ${{ secrets.AWS_ACCESS_KEY_ID_STAGE }}
         run: |
           #docker run --rm jessegersenson/terratest:latest go test -run terraform_basic_example_test.go
-          #docker run --rm -v $(pwd):/tmp/test -w /tmp/test -e AWS_SECRET_ACCESS_KEY=$SECRET -e AWS_ACCESS_KEY_ID=$KEY jessegersenson/terratest:latest go test -v
-          echo $(pwd)
-          ls -altr
-          whoami
-          docker run --rm -v $(pwd):/tmp/test -w /tmp/test -e AWS_SECRET_ACCESS_KEY=$SECRET -e AWS_ACCESS_KEY_ID=$KEY jessegersenson/terratest:latest ls -al
+          date -u
+          docker run --rm -v $(pwd):/tmp/app -w /tmp/app/test -e AWS_SECRET_ACCESS_KEY=$SECRET -e AWS_ACCESS_KEY_ID=$KEY jessegersenson/terratest:latest go test -v
+          date -u
+          echo $SECONDS
 
