@@ -8,7 +8,6 @@ variable "description" {
   default = "cluster description"
 }
 
-
 variable "environment" {
   type    = string
   default = "dev"
@@ -43,7 +42,6 @@ variable "default-capacity-provider" {
   type    = string
   default = "FARGATE_SPOT"
 }
-
 
 variable "logging" {
   type    = string
