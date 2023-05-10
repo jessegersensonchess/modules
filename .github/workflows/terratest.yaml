@@ -16,6 +16,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: run a test
+        env:
+          SECRET: ${{ secrets.AWS_SECRET_ACCESS_KEY_STAGE }}
+          KEY: ${{ secrets.AWS_ACCESS_KEY_ID_STAGE }}
         run: |
-          docker run --rm jessegersenson/terratest:latest go test -run terraform_basic_example_test.go
+          #docker run --rm jessegersenson/terratest:latest go test -run terraform_basic_example_test.go
+          docker run --rm -v $(pwd):/tmp/test -w /tmp/test -e AWS_SECRET_ACCESS_KEY=$SECRET -e AWS_ACCESS_KEY_ID=$KEY jessegersenson/terratest:latest go test -v
 
