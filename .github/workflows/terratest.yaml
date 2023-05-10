@@ -15,6 +15,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Restore MySQL Image Cache if it exists
+        id: cache-docker-mysql
+        uses: actions/cache@v3
+        with:
+          path: ci/cache/docker/mysql
+          key: cache-docker-mysql-5.7
+
+      - name: Update MySQL Image Cache if cache miss
+        if: steps.cache-docker-mysql.outputs.cache-hit != 'true'
+        run: docker pull jessegersenson/terratest:latest && mkdir -p ci/cache/docker/mysql && docker image save jessegersenson/terratest:latest --output ./ci/cache/docker/mysql/mysql-5.7.tar
+
+      - name: Use MySQL Image Cache if cache hit
+        if: steps.cache-docker-mysql.outputs.cache-hit == 'true'
+        run: docker image load --input ./ci/cache/docker/mysql/mysql-5.7.tar
+
       - name: run a test
         env:
           SECRET: ${{ secrets.AWS_SECRET_ACCESS_KEY_STAGE }}
