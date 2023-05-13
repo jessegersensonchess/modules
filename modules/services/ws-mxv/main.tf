@@ -84,7 +84,7 @@ module "service" {
   environment          = local.environment
   owner                = local.owner
   force_new_deployment = var.force_new_deployment
-  control_value        = data.aws_ecr_image.image.id # use to detect image changes
+  control_value        = data.aws_ecr_image.image.id
 
 }
 
@@ -105,7 +105,7 @@ module "target-group" {
 
 module "task-definition" {
   source                 = "../../services/ecs/task_definition"
-  image                  = "${module.ecr.url}:latest"
+  image                  = "${module.ecr.url}:${var.image_tag}"
   app                    = local.service
   service                = local.service
   environment            = local.environment

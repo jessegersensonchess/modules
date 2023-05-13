@@ -1,3 +1,9 @@
+variable "image_tag" {
+  type        = string
+  default     = "latest"
+  description = "docker image tag to use for service"
+}
+
 variable "health_check_path" {
   type    = string
   default = "my-health-check-path"
