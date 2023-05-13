@@ -33,7 +33,8 @@ variable "environment" {
 }
 
 variable "managed_by" {
-  type    = string
-  default = "Terraform"
+  type        = string
+  default     = "Terraform"
+  description = "used to tag resource for organization purposes only"
 }
 
