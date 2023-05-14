@@ -33,6 +33,7 @@ func TestUnitEfs(t *testing.T) {
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
 	defer terraform.Destroy(t, terraformOptions)
 
+	fmt.Println("=========================== uniqueId =", uniqueId)
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
 
@@ -65,10 +66,6 @@ func validateEfs(t *testing.T, terraformOptions *terraform.Options, uniqueId str
 	Expect(t, "owner", owner, "king")
 	Expect(t, "environment", environment, "friendly")
 	Expect(t, "encrypted", encrypted, "false")
-
-	//	if encrypted != "true" {
-	//		t.Errorf("ERROR: expected encrypted = true , got %v", encrypted)
-	//	}
 
 	if !strings.Contains(service, uniqueId) {
 		t.Errorf("ERROR: expected service uniqueId, got %v, %v", service, uniqueId)

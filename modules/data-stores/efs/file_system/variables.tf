@@ -72,7 +72,7 @@ variable "environment" {
 variable "service" {
   type        = string
   default     = "ws-mxv"
-  description = "service which created this EFS"
+  description = "service which created this EFS. Value appears as a meta tag with key Service"
 }
 
 variable "folder_name" {
