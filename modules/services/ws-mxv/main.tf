@@ -49,7 +49,6 @@ module "efs" {
 
 module "listener-rule" {
   source           = "../../network/load-balancers/listener_rules"
-  order            = var.listener-rule-order
   target_group_arn = module.target-group.target_group["arn"]
   type             = var.listener-rule-type
   path_pattern     = var.path_pattern
@@ -59,7 +58,7 @@ module "listener-rule" {
 
 data "aws_ecr_image" "image" {
   repository_name = local.service
-  image_tag       = "latest"
+  image_tag       = var.image_tag
 }
 
 output "aws_ecr_id" {
@@ -89,18 +88,18 @@ module "service" {
 }
 
 module "target-group" {
-  source                         = "../../network/load-balancers/target_groups"
-  port                           = var.target-group-port
-  owner                          = local.owner
-  environment                    = local.environment
-  target_group_name              = local.service
-  health_check_path              = var.health_check_path
-  health_check_threshold         = var.health_check_threshold
-  health_check_timeout           = var.health_check_timeout
-  health_check_healthy_threshold = var.health_check_healthy_threshold
-  health_check_interval          = var.health_check_interval
-  vpc_id                         = var.vpc_id
-  deregistration_delay           = var.deregistration_delay
+  source                           = "../../network/load-balancers/target_groups"
+  port                             = var.target-group-port
+  owner                            = local.owner
+  environment                      = local.environment
+  target_group_name                = local.service
+  health_check_path                = var.health_check_path
+  health_check_timeout             = var.health_check_timeout
+  health_check_unhealthy_threshold = var.health_check_unhealthy_threshold
+  health_check_healthy_threshold   = var.health_check_healthy_threshold
+  health_check_interval            = var.health_check_interval
+  vpc_id                           = var.vpc_id
+  deregistration_delay             = var.deregistration_delay
 }
 
 module "task-definition" {

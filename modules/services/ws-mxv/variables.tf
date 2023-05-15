@@ -1,206 +1,242 @@
 variable "image_tag" {
   type        = string
   default     = "latest"
-  description = "docker image tag to use for service"
+  description = "docker image tag to use with service"
 }
 
 variable "health_check_path" {
-  type    = string
-  default = "my-health-check-path"
+  type        = string
+  default     = "my-health-check-path"
+  description = "Destination for the health check request. Required for HTTP/HTTPS ALB and HTTP NLB. Only applies to HTTP/HTTPS."
+}
+
+variable "health_check_unhealthy_threshold" {
+  type        = number
+  default     = 3
+  description = "Number of consecutive health check failures required before considering a target unhealthy. The range is 2-10."
 }
 
 variable "health_check_healthy_threshold" {
-  type    = number
-  default = 3
+  type        = number
+  default     = 2
+  description = "Number of consecutive health check successes required before considering a target healthy. The range is 2-10"
 }
 
 variable "health_check_interval" {
-  type    = number
-  default = 5
+  type        = number
+  default     = 5
+  description = "Approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300. For lambda target groups, it needs to be greater than the timeout of the underlying lambda"
 }
 
 variable "health_check_timeout" {
-  type    = number
-  default = 3
-}
-
-variable "health_check_threshold" {
-  type    = number
-  default = 2
-}
-
-variable "description" {
-  type    = string
-  default = "my-description"
-}
-
-variable "environment" {
-  type    = string
-  default = "my-environment"
-}
-
-variable "service" {
-  type    = string
-  default = "my-service"
+  type        = number
+  default     = 3
+  description = "Amount of time, in seconds, during which no response from a target means a failed health check. The range is 2–120 seconds."
 }
 
 variable "region" {
-  type    = string
-  default = "my-region"
+  type        = string
+  default     = "my-region"
+  description = "aws region in which to add resources"
 }
 
 variable "bin-containerPath" {
-  type    = string
-  default = "/app/bin/cert"
+  type        = string
+  default     = "/app/bin/cert"
+  description = "path to the bin folder, as seen from inside the container. used in task definition for mounting the /bin EFS volume"
 }
 
 variable "config-containerPath" {
-  type    = string
-  default = "/app/config/local"
+  type        = string
+  default     = "/app/config/local"
+  description = "path to the config folder, as seen from inside the container. used in task definition for mounting the /config EFS volume"
 }
 
-#variable "container_environment" {
-# 	type = list(string)
-# 	default = {"placeholder"="here"}
-# 	}
-
 variable "logs-containerPath" {
-  type    = string
-  default = "/app/logs"
+  type        = string
+  default     = "/app/logs"
+  description = "path to the logs folder, as seen from inside the container. used in task definition for mounting the /logs EFS volume"
 }
 
 variable "scan_on_push" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false)."
 }
 
 variable "force_delete" {
-  type    = bool
-  default = false
-}
-
-variable "safe_to_delete" {
-  type    = bool
-  default = false
-}
-
-variable "owner" {
-  type    = string
-  default = "the owner"
+  type        = bool
+  default     = false
+  description = "(Optional) If true, will delete the repository even if it contains images"
 }
 
 variable "deregistration_delay" {
-  type    = number
-  default = 300
+  type        = number
+  default     = 300
+  description = "Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds."
 }
 
 variable "container_port" {
-  type    = number
-  default = 1443
+  type        = number
+  default     = 1443
+  description = "Port on the container to associate with the load balancer."
 }
 
 variable "desired_count" {
-  type    = number
-  default = 0
+  type        = number
+  default     = 0
+  description = "Number of instances of the task definition."
 }
 
 variable "task-definition-hostPort" {
-  type    = number
-  default = 1443
+  type        = number
+  default     = 1443
+  description = ""
 }
 
 variable "task-definition-containerPort" {
-  type    = number
-  default = 1443
+  type        = number
+  default     = 1443
+  description = ""
 }
 
 variable "task-definition-cpu" {
-  type    = number
-  default = 256
+  type        = number
+  default     = 256
+  description = ""
 }
 
 variable "task-definition-memory" {
-  type    = number
-  default = 512
+  type        = number
+  default     = 512
+  description = ""
 }
 
 variable "target-group-port" {
-  type    = number
-  default = 80
+  type        = number
+  default     = 80
+  description = ""
 }
 
 variable "listener-rule-priority" {
-  type    = number
-  default = 1
+  type        = number
+  default     = 1
+  description = "The priority for the rule between 1 and 50000. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority."
 }
 
-variable "listener-rule-order" {
-  type    = number
-  default = 1
-}
+##### TODO: remove
+#variable "listener-rule-order" {
+#  type        = number
+#  default     = 1
+#  description = "depreciated. do not use"
+#}
 
 variable "path_pattern" {
-  type    = list(string)
-  default = []
+  type        = list(string)
+  default     = []
+  description = "Contains a single values item which is a list of path patterns to match against the request URL. Maximum size of each pattern is 128 characters. Comparison is case sensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). Only one pattern needs to match for the condition to be satisfied. Path pattern is compared only to the path of the URL, not to its query string. To compare against the query string, use a query_string condition."
 }
 
 variable "listener-rule-type" {
-  type    = string
-  default = "forward"
+  type        = string
+  default     = "forward"
+  description = "The type of routing action. Valid values are forward, redirect, fixed-response, authenticate-cognito and authenticate-oidc"
 }
 
 variable "listener_arn" {
-  type    = string
-  default = "my-listener_arn"
+  type        = string
+  default     = "my-listener_arn"
+  description = "The ARN of the listener to which to attach the rule."
 }
 
 variable "cluster" {
-  type    = string
-  default = "my-cluster"
+  type        = string
+  default     = "my-cluster"
+  description = ""
 }
 
 variable "vpc_id" {
-  type    = string
-  default = "my-vpc-id"
+  type        = string
+  default     = "my-vpc-id"
+  description = ""
 }
 
 variable "subnets" {
-  type    = list(string)
-  default = ["my-subnets"]
+  type        = list(string)
+  default     = ["my-subnets"]
+  description = ""
 }
 
 variable "security_groups" {
-  type    = list(string)
-  default = ["my-security_groups"]
+  type        = list(string)
+  default     = ["my-security_groups"]
+  description = "Security group IDs, used by EFS filesystem"
 }
 
 variable "private_subnet_a" {
-  type    = string
-  default = "my-private_subnet_a"
+  type        = string
+  default     = "my-private_subnet_a"
+  description = ""
 }
 
 variable "private_subnet_b" {
-  type    = string
-  default = "my-private_subnet_b"
+  type        = string
+  default     = "my-private_subnet_b"
+  description = ""
 }
 
 variable "public_subnet_a" {
-  type    = string
-  default = "my-public_subnet_a"
+  type        = string
+  default     = "my-public_subnet_a"
+  description = "Public subnet, used by EFS filesystem"
 }
 
 variable "public_subnet_b" {
-  type    = string
-  default = "my-public_subnet_b"
+  type        = string
+  default     = "my-public_subnet_b"
+  description = "Public subnet, used by EFS filesystem"
 }
 
 variable "execution_role_arn" {
-  type    = string
-  default = "my-execution_role_arn"
+  type        = string
+  default     = "my-execution_role_arn"
+  description = ""
 }
 
 variable "force_new_deployment" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "(Optional) Enable to force a new task deployment of the service. This can be used to update tasks to use a newer Docker image with same image/tag combination (e.g., myimage:latest), roll Fargate tasks onto a newer platform version, or immediately deploy ordered_placement_strategy and placement_constraints updates."
 }
+
+variable "description" {
+  type        = string
+  default     = "my-description"
+  description = "(optional) Description of resource. Value appears as a tag with key Description"
+}
+
+variable "environment" {
+  type        = string
+  default     = "my-environment"
+  description = "(optional) Environment of the resource. Value appears as a tag with key Environment"
+}
+
+variable "service" {
+  type        = string
+  default     = "my-service"
+  description = "(optional) Service which uses this resource. Value appears as a tag with key Service"
+}
+
+variable "safe_to_delete" {
+  type        = bool
+  default     = false
+  description = "(optional) Can this resource be destroyed? Value appears as a tag with key safe_to_delete"
+}
+
+variable "owner" {
+  type        = string
+  default     = "the owner"
+  description = "(optional) Owner of the resource. Value appears as a tag with key Owner"
+}
+
 

@@ -14,14 +14,14 @@ resource "aws_lb_target_group" "target_group" {
 
   health_check {
     enabled             = var.health_check_enabled
-    healthy_threshold   = var.health_check_healthy_threshold
     interval            = var.health_check_interval
     matcher             = var.health_check_matcher
     path                = var.health_check_path
     port                = var.health_check_port
     protocol            = var.health_check_protocol
     timeout             = var.health_check_timeout
-    unhealthy_threshold = var.health_check_threshold
+    healthy_threshold   = var.health_check_healthy_threshold
+    unhealthy_threshold = var.health_check_unhealthy_threshold
   }
 
   lifecycle {
