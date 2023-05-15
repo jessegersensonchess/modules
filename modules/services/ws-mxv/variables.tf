@@ -125,11 +125,11 @@ variable "listener-rule-priority" {
 }
 
 ##### TODO: remove
-#variable "listener-rule-order" {
-#  type        = number
-#  default     = 1
-#  description = "depreciated. do not use"
-#}
+variable "listener-rule-order" {
+  type        = number
+  default     = 1
+  description = ""
+}
 
 variable "path_pattern" {
   type        = list(string)

@@ -1,7 +1,7 @@
 variable "order" {
   type        = number
   default     = 1
-  description = "Not in use. Depreciated. Do not use"
+  description = ""
 }
 
 variable "target_group_arn" {

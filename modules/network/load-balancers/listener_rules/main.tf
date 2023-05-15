@@ -1,6 +1,6 @@
 resource "aws_lb_listener_rule" "rule" {
   action {
-    #    order            = var.order
+    order            = var.order
     target_group_arn = var.target_group_arn
     type             = var.type
   }

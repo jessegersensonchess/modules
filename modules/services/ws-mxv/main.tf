@@ -53,6 +53,7 @@ module "listener-rule" {
   type             = var.listener-rule-type
   path_pattern     = var.path_pattern
   listener_arn     = var.listener_arn
+  order            = var.listener-rule-order
   priority         = var.listener-rule-priority
 }
 
