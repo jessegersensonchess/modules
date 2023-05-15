@@ -200,7 +200,7 @@ variable "public_subnet_b" {
 variable "execution_role_arn" {
   type        = string
   default     = "my-execution_role_arn"
-  description = ""
+  description = "ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume"
 }
 
 variable "force_new_deployment" {

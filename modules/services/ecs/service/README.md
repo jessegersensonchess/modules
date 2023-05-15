@@ -53,5 +53,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_output"></a> [output](#output\_output) | n/a |
+| <a name="output_output"></a> [output](#output\_output) | output from aws\_ecs\_service |
 <!-- END_TF_DOCS -->

@@ -25,7 +25,7 @@ variable "validation-method" {
 variable "description" {
   type        = string
   default     = "description"
-  description = "description of what cert is used for"
+  description = "basic description of resource. Value appears as a meta tag with key Description"
 }
 
 variable "service" {
