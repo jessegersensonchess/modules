@@ -2,7 +2,6 @@ variable "force_delete" {
   type        = bool
   default     = false
   description = "allow container registry to be deleted even if it contains images"
-
 }
 
 variable "name" {
