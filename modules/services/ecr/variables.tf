@@ -6,8 +6,8 @@ variable "force_delete" {
 
 variable "name" {
   type        = string
-  default     = "name-missing"
-  description = "name of the ECR repository"
+  default     = "default-name"
+  description = "ECR repository name"
 }
 
 variable "image_tag_mutability" {

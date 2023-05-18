@@ -14,7 +14,7 @@ resource "aws_ecr_repository" "repository" {
   tags = {
     Name        = var.name
     Environment = var.environment
-    Managed_By  = "adsf" # var.managed_by
+    Managed_By  = var.managed_by
   }
 
 }
