@@ -12,7 +12,7 @@ variable "network_basename" {
 
 variable "availability_zones" {
   default     = ["eu-west-1a", "eu-west-1b"]
-  description = ""
+  description = "AWS availability zones"
 }
 
 variable "environment" {
