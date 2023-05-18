@@ -59,6 +59,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_aws_private_route_table_a_id"></a> [aws\_private\_route\_table\_a\_id](#output\_aws\_private\_route\_table\_a\_id) | Route table id for private route A |
+| <a name="output_aws_private_route_table_b_id"></a> [aws\_private\_route\_table\_b\_id](#output\_aws\_private\_route\_table\_b\_id) | Route table id for private route B |
 | <a name="output_output"></a> [output](#output\_output) | n/a |
 | <a name="output_private_subnet_a"></a> [private\_subnet\_a](#output\_private\_subnet\_a) | n/a |
 | <a name="output_private_subnet_b"></a> [private\_subnet\_b](#output\_private\_subnet\_b) | n/a |
