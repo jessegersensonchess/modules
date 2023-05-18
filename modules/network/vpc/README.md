@@ -64,7 +64,7 @@ No modules.
 | <a name="output_output"></a> [output](#output\_output) | All output from VPC |
 | <a name="output_private_subnet_a"></a> [private\_subnet\_a](#output\_private\_subnet\_a) | The ID of private subnet A |
 | <a name="output_private_subnet_b"></a> [private\_subnet\_b](#output\_private\_subnet\_b) | The ID of private subnet B |
-| <a name="output_public_subnet_a"></a> [public\_subnet\_a](#output\_public\_subnet\_a) | The ID of public subnet A |
+| <a name="output_public_subnet_a"></a> [public\_subnet\_a](#output\_public\_subnet\_a) | The ID of public subnet A lkjlkj asdlkjfaldsj |
 | <a name="output_public_subnet_b"></a> [public\_subnet\_b](#output\_public\_subnet\_b) | The ID of public subnet B |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC |
 <!-- END_TF_DOCS -->

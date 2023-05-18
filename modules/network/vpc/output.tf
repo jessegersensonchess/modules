@@ -1,6 +1,6 @@
 output "public_subnet_a" {
   value       = aws_subnet.public_subnet_a.id
-  description = "The ID of public subnet A"
+  description = "The ID of public subnet A lkjlkj asdlkjfaldsj "
 }
 
 output "public_subnet_b" {
