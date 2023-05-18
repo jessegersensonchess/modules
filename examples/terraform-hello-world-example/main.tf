@@ -3,7 +3,7 @@ terraform {
 }
 
 output "hello_world" {
-  value       = "Hello World, Hello!"
+  value       = "ello World, Hello!"
   description = "hello world description"
 }
 
