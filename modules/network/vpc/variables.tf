@@ -18,7 +18,7 @@ variable "availability_zones" {
 variable "environment" {
   type        = string
   default     = "dev"
-  description = "(optional) Environment of the resource. Value appears as a tag with key Environment"
+  description = "(Optional) Environment of the resource. Value appears as a tag with key Environment"
 }
 
 variable "base_subnet" {
