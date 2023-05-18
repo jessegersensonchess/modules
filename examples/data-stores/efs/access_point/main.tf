@@ -1,6 +1,6 @@
 terraform {
   # This module is tested with Terraform 1.x.x. However, to make upgrading easier, we set 1.0.0 as the minimum version.
-  required_version = ">= 1.0.0"
+  required_version = ">= 1.0.1"
 }
 
 provider "aws" {
