@@ -4,21 +4,22 @@ on:
   push:
     branches: [ "master" ]
   pull_request:
+    branches: [ "master" ]
   workflow_dispatch:
   
 jobs:
 
-  format:
+  terraform_fmt:
     runs-on: ubuntu-latest
-    name: terraform stuff
+    name: terraform static eval
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Terraform Setup
+      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Terraform Run
+      - name: Terraform Fmt
         run: |
           terraform fmt -recursive -check
 
