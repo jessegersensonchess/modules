@@ -3,7 +3,7 @@ terraform {
 }
 
 output "hello_world" {
-  syntax_error_here_value       = "xxWorld, Hello!"
-  description = "hello world description"
+  value = "Hello World, Hello!"
+  description             = "hello world description"
 }
 
