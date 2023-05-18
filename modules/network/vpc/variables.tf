@@ -48,13 +48,13 @@ variable "enable_dns_support" {
 variable "enable_network_address_usage_metrics" {
   type        = bool
   default     = false
-  description = ""
+  description = "True will enable network address usage metrics"
 }
 
 variable "managed_by" {
   type        = string
   default     = "Terraform"
-  description = ""
+  description = "entity managing this resource. Value appears as a meta tag with key Managed_By"
 }
 
 variable "instance_tenancy" {
