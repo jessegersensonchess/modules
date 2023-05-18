@@ -53,7 +53,7 @@ No modules.
 | <a name="input_private_subnet_b_map_public_ip_on_launch"></a> [private\_subnet\_b\_map\_public\_ip\_on\_launch](#input\_private\_subnet\_b\_map\_public\_ip\_on\_launch) | n/a | `bool` | `false` | no |
 | <a name="input_public_subnet_a_map_public_ip_on_launch"></a> [public\_subnet\_a\_map\_public\_ip\_on\_launch](#input\_public\_subnet\_a\_map\_public\_ip\_on\_launch) | n/a | `bool` | `true` | no |
 | <a name="input_public_subnet_b_map_public_ip_on_launch"></a> [public\_subnet\_b\_map\_public\_ip\_on\_launch](#input\_public\_subnet\_b\_map\_public\_ip\_on\_launch) | n/a | `bool` | `true` | no |
-| <a name="input_region"></a> [region](#input\_region) | n/a | `string` | `"eu-west-1"` | no |
+| <a name="input_region"></a> [region](#input\_region) | AWS region for this resource | `string` | `"eu-west-1"` | no |
 
 ## Outputs
 

@@ -1,6 +1,7 @@
 variable "region" {
-  type    = string
-  default = "eu-west-1"
+  type        = string
+  default     = "eu-west-1"
+  description = "AWS region for this resource"
 }
 
 variable "network_basename" {
