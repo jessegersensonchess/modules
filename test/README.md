@@ -40,3 +40,4 @@ up, it should be free, but you are completely responsible for all AWS charges.
 1. `cd test`
 1. To run a single test: `go test -v -timeout 15m -run <TEST_NAME>`
 
+

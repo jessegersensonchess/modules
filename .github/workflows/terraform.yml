@@ -26,4 +26,5 @@ jobs:
 #      - name: tfsec
 #        run: |
 #          docker run -it --rm -v $(pwd):/app -w /app tfsec:latest tfsec --minimum-severity CRITICAL --soft-fail --force-all-dirs
+#
 
