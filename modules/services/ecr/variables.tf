@@ -13,19 +13,19 @@ variable "name" {
 variable "image_tag_mutability" {
   type        = string
   default     = "MUTABLE"
-  description = "(Optional) The tag mutability setting for the repository. Must be one of: MUTABLE or IMMUTABLE."
+  description = "(Optional) The tag mutability setting for the repository. Must be either: MUTABLE or IMMUTABLE"
 }
 
 variable "encryption_type" {
   type        = string
   default     = "AES256"
-  description = "(Optional) The encryption type to use for the repository. Valid values are AES256 or KMS."
+  description = "(Optional) The encryption type to use for the repository. Valid values are AES256 or KMS"
 }
 
 variable "scan_on_push" {
   type        = bool
   default     = false
-  description = "Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false)."
+  description = "Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false)"
 }
 
 variable "environment" {
