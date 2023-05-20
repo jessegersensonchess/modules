@@ -25,12 +25,12 @@ jobs:
 
   tfsec:
     runs-on: ubuntu-latest
-    name: terraform static eval
+    name: tfsec security eval
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-       - name: tfsec
+      - name: tfsec
         run: |
           docker run -it --rm -v $(pwd):/app -w /app tfsec:latest tfsec --minimum-severity CRITICAL --soft-fail --force-all-dirs --exclude-downloaded-modules
 
