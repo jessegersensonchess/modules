@@ -18,8 +18,6 @@ jobs:
 
       - name: tfsec
         run: |
-          ls -al 
-          pwd
-          docker run -i --rm -v $(pwd):/app -w /app jessegersenson/tfsec --minimum-severity CRITICAL --soft-fail --force-all-dirs --exclude-downloaded-modules
+          docker run -i --rm -v $(pwd):/app -w /app jessegersenson/tfsec --minimum-severity HIGH --force-all-dirs --soft-fail
 
 
