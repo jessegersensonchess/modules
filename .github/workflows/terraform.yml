@@ -23,15 +23,4 @@ jobs:
         run: |
           terraform fmt -recursive -check
 
-  tfsec:
-    runs-on: ubuntu-latest
-    name: tfsec security eval
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: tfsec
-        run: |
-          docker run -i --rm -v $(pwd):/app -w /app tfsec:latest tfsec --minimum-severity CRITICAL --soft-fail --force-all-dirs --exclude-downloaded-modules
-
 

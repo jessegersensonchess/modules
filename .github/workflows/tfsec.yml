@@ -1,0 +1,23 @@
+name: Terraform security scan
+  
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+  
+jobs:
+
+  tfsec:
+    runs-on: ubuntu-latest
+    name: tfsec security eval
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: tfsec
+        run: |
+          docker run -i --rm -v $(pwd):/app -w /app jessegersenson/tfsec tfsec --minimum-severity CRITICAL --soft-fail --force-all-dirs --exclude-downloaded-modules
+
+
