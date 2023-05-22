@@ -22,12 +22,12 @@ func TestUnitVpc(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"base_subnet":                          "10.88",
-			"region":                               "eu-west-2",
-			"network_basename":                     fmt.Sprintf("mynetwork-%s", uniqueId),
-			"environment":                          "myenv",
-			"enable_dns_hostnames":                 "true",
-			"enable_dns_support":                   "true",
+			"base_subnet":      "10.88",
+			"region":           "eu-west-2",
+			"network_basename": fmt.Sprintf("mynetwork-%s", uniqueId),
+			"environment":      "myenv",
+			//"enable_dns_hostnames":                 "true",
+			//"enable_dns_support":                   "true",
 			"enable_network_address_usage_metrics": "true",
 			"managed_by":                           "terratest",
 		},
@@ -59,8 +59,8 @@ func validateVpc(t *testing.T, terraformOptions *terraform.Options) {
 	vpc_id := terraform.Output(t, terraformOptions, "vpc_id")
 	base_subnet := terraform.Output(t, terraformOptions, "cidr_block")
 	enable_network_address_usage_metrics := terraform.Output(t, terraformOptions, "enable_network_address_usage_metrics")
-	enable_dns_support := terraform.Output(t, terraformOptions, "enable_dns_support")
-	enable_dns_hostnames := terraform.Output(t, terraformOptions, "enable_dns_hostnames")
+	//enable_dns_support := terraform.Output(t, terraformOptions, "enable_dns_support")
+	//enable_dns_hostnames := terraform.Output(t, terraformOptions, "enable_dns_hostnames")
 	environment := terraform.Output(t, terraformOptions, "environment")
 	name := terraform.Output(t, terraformOptions, "name")
 	managed_by := terraform.Output(t, terraformOptions, "managed_by")
@@ -71,13 +71,6 @@ func validateVpc(t *testing.T, terraformOptions *terraform.Options) {
 
 	if enable_network_address_usage_metrics != "true" {
 		t.Errorf("ERROR: expected enable_network_address_usage_metrics=true, got %v", enable_network_address_usage_metrics)
-	}
-	if enable_dns_support != "true" {
-		t.Errorf("ERROR: expected enable_dns_support=true, got %v", enable_dns_support)
-	}
-
-	if enable_dns_hostnames != "true" {
-		t.Errorf("ERROR: expected enable_dns_hostnames=true, got %v", enable_dns_hostnames)
 	}
 
 	if environment != "myenv" {

@@ -1,16 +1,22 @@
 terraform {
   # This module is tested with Terraform 1.x.x. However, to make upgrading easier, we set 1.0.0 as the minimum version.
-  required_version = ">= 1.0.0"
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
 }
 
 provider "aws" {
   region = var.region
 }
 
-data "aws_region" "current" {
-  name = var.region
-}
-
+#data "aws_region" "current" {
+#  name = var.region
+#}
+#
 module "vpc" {
   source = "../../../modules/network/vpc"
   region = var.region
