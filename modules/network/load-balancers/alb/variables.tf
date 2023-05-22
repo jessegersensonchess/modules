@@ -16,18 +16,18 @@ variable "enable_waf_fail_open" {
   description = "(Optional) Indicates whether to allow a WAF-enabled load balancer to route requests to targets if it is unable to forward the request to AWS WAF"
 }
 
-variable "xff_header_processing_mode" {
-  type        = string
-  default     = "append"
-  description = "(Optional) Determines how the load balancer modifies the X-Forwarded-For header in the HTTP request before sending the request to the target. The possible values are append, preserve, and remove. Only valid for Load Balancers of type application"
-}
-
-variable "enable_xff_client_port" {
-  type        = bool
-  default     = false
-  description = "(Optional) Indicates whether the X-Forwarded-For header should preserve the source port that the client used to connect to the load balancer in application load balancers"
-}
-
+#variable "xff_header_processing_mode" {
+#  type        = string
+#  default     = "append"
+#  description = "(Optional) Determines how the load balancer modifies the X-Forwarded-For header in the HTTP request before sending the request to the target. The possible values are append, preserve, and remove. Only valid for Load Balancers of type application"
+#}
+#
+#variable "enable_xff_client_port" {
+#  type        = bool
+#  default     = false
+#  description = "(Optional) Indicates whether the X-Forwarded-For header should preserve the source port that the client used to connect to the load balancer in application load balancers"
+#}
+#
 variable "desync_mitigation_mode" {
   type        = string
   default     = "defensive"
@@ -88,12 +88,12 @@ variable "security-groups" {
   description = "(Optional) A list of security group IDs to assign to the LB. Only valid for Load Balancers of type application"
 }
 
-variable "subnets" {
-  type        = list(string)
-  default     = ["my-subnets"]
-  description = "(Optional) A list of subnet IDs to attach to the LB. Subnets cannot be updated for Load Balancers of type network. Changing this value for load balancers of type network will force a recreation of the resource"
-}
-
+#variable "subnets" {
+#  type        = list(string)
+#  default     = ["my-subnets"]
+#  description = "(Optional) A list of subnet IDs to attach to the LB. Subnets cannot be updated for Load Balancers of type network. Changing this value for load balancers of type network will force a recreation of the resource"
+#}
+#
 variable "lb_idle_timeout" {
   type        = number
   default     = 30

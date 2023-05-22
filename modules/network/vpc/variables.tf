@@ -10,10 +10,10 @@ variable "network_basename" {
   description = "prefix for network name"
 }
 
-variable "availability_zones" {
-  default     = ["eu-west-1a", "eu-west-1b"]
-  description = "AWS availability zones"
-}
+#variable "availability_zones" {
+#  default     = ["eu-west-1a", "eu-west-1b"]
+#  description = "AWS availability zones"
+#}
 
 variable "environment" {
   type        = string
@@ -82,8 +82,8 @@ variable "public_subnet_a_map_public_ip_on_launch" {
 
 }
 
-variable "public_subnet_b_map_public_ip_on_launch" {
-  type        = bool
-  default     = true
-  description = "(Optional) Specify true to indicate that instances launched into the subnet should be assigned a public IP address."
-}
+#variable "public_subnet_b_map_public_ip_on_launch" {
+#  type        = bool
+#  default     = true
+#  description = "(Optional) Specify true to indicate that instances launched into the subnet should be assigned a public IP address."
+#}

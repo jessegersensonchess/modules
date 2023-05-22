@@ -1,13 +1,16 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.64.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.64.0 |
 
 ## Modules
 
@@ -28,8 +31,6 @@ No modules.
 | <a name="input_access_point_id-config"></a> [access\_point\_id-config](#input\_access\_point\_id-config) | access point id of 'config' EFS | `string` | `"my-access_point_id-config"` | no |
 | <a name="input_access_point_id-logs"></a> [access\_point\_id-logs](#input\_access\_point\_id-logs) | access point id of 'logs' EFS | `string` | `"my-access_point_id-logs"` | no |
 | <a name="input_app"></a> [app](#input\_app) | value for docker label APP | `string` | `"my-app"` | no |
-| <a name="input_awslogs-group"></a> [awslogs-group](#input\_awslogs-group) | AWS logs group of logConfiguration | `string` | `"my-awslogs-group"` | no |
-| <a name="input_awslogs-region"></a> [awslogs-region](#input\_awslogs-region) | AWS region of logConfiguration | `string` | `"my-awslogs-region"` | no |
 | <a name="input_awslogs-stream-prefix"></a> [awslogs-stream-prefix](#input\_awslogs-stream-prefix) | AWS stream prefix of logConfiguration | `string` | `"ecs"` | no |
 | <a name="input_bin-containerPath"></a> [bin-containerPath](#input\_bin-containerPath) | path to the bin folder, as seen from inside the container. used in task definition for mounting the /bin EFS volume | `string` | `"/app/bin/cert"` | no |
 | <a name="input_config-containerPath"></a> [config-containerPath](#input\_config-containerPath) | path to the config folder, as seen from inside the container. used in task definition for mounting the /config EFS volume | `string` | `"/app/config/local"` | no |

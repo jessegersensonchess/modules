@@ -124,22 +124,16 @@ variable "requires_compatibilities" {
   description = "Set of launch types required by the task. The valid values are EC2 and FARGATE."
 }
 
-variable "awslogs-group" {
-  type        = string
-  default     = "my-awslogs-group"
-  description = "AWS logs group of logConfiguration"
-}
+#variable "awslogs-group" {
+#  type        = string
+#  default     = "my-awslogs-group"
+#  description = "AWS logs group of logConfiguration"
+#}
 
 variable "awslogs-stream-prefix" {
   type        = string
   default     = "ecs"
   description = "AWS stream prefix of logConfiguration"
-}
-
-variable "awslogs-region" {
-  type        = string
-  default     = "my-awslogs-region"
-  description = "AWS region of logConfiguration"
 }
 
 variable "region" {

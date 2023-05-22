@@ -1,13 +1,16 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.64.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.64.0 |
 
 ## Modules
 
@@ -25,12 +28,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_environment"></a> [environment](#input\_environment) | (optional) Environment of the resource. Value appears as a tag with key Environment | `string` | `"dev"` | no |
 | <a name="input_filesystem_id"></a> [filesystem\_id](#input\_filesystem\_id) | ID of the file system for which the access point is intended. | `string` | `"filesystem_id_here"` | no |
-| <a name="input_folder_name"></a> [folder\_name](#input\_folder\_name) | not in use | `string` | `"/"` | no |
 | <a name="input_owner"></a> [owner](#input\_owner) | (optional) Owner of the resource. Value appears as a tag with key Owner | `string` | `"Jesse Gersenson"` | no |
 | <a name="input_path"></a> [path](#input\_path) | Directory on the Amazon EFS file system that the access point provides access to. | `string` | `"/"` | no |
-| <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | not used | `list(string)` | <pre>[<br>  "security_group1",<br>  "security_group2"<br>]</pre> | no |
 | <a name="input_service"></a> [service](#input\_service) | (optional) Service which uses this resource. Value appears as a tag with key Service | `string` | `"ws-mxv"` | no |
-| <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | not used | `string` | `"my-subnet"` | no |
 
 ## Outputs
 

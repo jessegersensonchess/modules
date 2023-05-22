@@ -11,18 +11,6 @@ variable "filesystem_id" {
   description = "ID of the file system for which the access point is intended."
 }
 
-variable "security_groups" {
-  type        = list(string)
-  default     = ["security_group1", "security_group2"]
-  description = "not used"
-}
-
-variable "subnet_id" {
-  type        = string
-  default     = "my-subnet"
-  description = "not used"
-}
-
 variable "owner" {
   type        = string
   default     = "Jesse Gersenson"
@@ -41,8 +29,3 @@ variable "service" {
   description = "(optional) Service which uses this resource. Value appears as a tag with key Service"
 }
 
-variable "folder_name" {
-  type        = string
-  default     = "/"
-  description = "not in use"
-}

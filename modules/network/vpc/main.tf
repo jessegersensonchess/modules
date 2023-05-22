@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 locals {
   name             = var.network_basename
   environment      = var.environment
@@ -26,7 +36,7 @@ resource "aws_vpc" "vpc" {
 
   tags = {
     Name        = "${local.name}-VPC"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = var.managed_by
   }
 }
@@ -41,8 +51,8 @@ resource "aws_subnet" "public_subnet_a" {
 
   tags = {
     Name        = "${local.name}-Public-Subnet-A"
-    Environment = var.environment
-    Managed_By  = "Terraform"
+    Environment = local.environment
+    Managed_By  = var.managed_by
   }
 }
 
@@ -55,7 +65,7 @@ resource "aws_subnet" "public_subnet_b" {
 
   tags = {
     Name        = "${local.name}-Public-Subnet-B"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = "Terraform"
   }
 }
@@ -69,7 +79,7 @@ resource "aws_subnet" "private_subnet_a" {
 
   tags = {
     Name        = "${local.name}-Private-Subnet-A"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = "Terraform"
   }
 }
@@ -83,7 +93,7 @@ resource "aws_subnet" "private_subnet_b" {
 
   tags = {
     Name        = "${local.name}-Private-Subnet-B"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = "Terraform"
   }
 }
@@ -93,7 +103,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name        = "${local.name}-Internet-Gateway"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = "Terraform"
   }
 }
@@ -103,7 +113,7 @@ resource "aws_route_table" "public_route_table_a" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name        = "${local.name}-Route-Table-Public-A"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = "Terraform"
   }
 }
@@ -112,7 +122,7 @@ resource "aws_route_table" "public_route_table_b" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name        = "${local.name}-Route-Table-Public-B"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = "Terraform"
   }
 }
@@ -150,7 +160,7 @@ resource "aws_route_table" "private_route_table_a" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name        = "${local.name}-Route-Table-Private-A"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = "Terraform"
   }
 }
@@ -159,7 +169,7 @@ resource "aws_route_table" "private_route_table_b" {
   vpc_id = aws_vpc.vpc.id
   tags = {
     Name        = "${local.name}-Route-Table-Private-B"
-    Environment = var.environment
+    Environment = local.environment
     Managed_By  = "Terraform"
   }
 }

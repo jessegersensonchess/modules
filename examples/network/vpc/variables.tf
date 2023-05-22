@@ -8,10 +8,6 @@ variable "network_basename" {
   default = "terratest-disposable"
 }
 
-variable "availability_zones" {
-  default = ["eu-west-2a", "eu-west-2b"]
-}
-
 variable "environment" {
   type    = string
   default = "dev"

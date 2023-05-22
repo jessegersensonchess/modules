@@ -23,7 +23,7 @@ jobs:
         run: |
           #docker run --rm jessegersenson/terratest:latest go test -run terraform_basic_example_test.go
           date -u
-          docker run --rm -v $(pwd):/tmp/app -w /tmp/app/test -e AWS_SECRET_ACCESS_KEY=$SECRET -e AWS_ACCESS_KEY_ID=$KEY jessegersenson/terratest:latest go test -v
+          docker run --rm $(pwd):/tmp/app -w /tmp/app/test -e AWS_SECRET_ACCESS_KEY=$SECRET -e AWS_ACCESS_KEY_ID=$KEY jessegersenson/terratest:latest go test -v
           date -u
           echo "ran for $SECONDS seconds"
 

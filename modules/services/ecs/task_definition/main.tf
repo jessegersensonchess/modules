@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 locals {
   container_name     = var.container_name
   containerPort      = var.containerPort
@@ -19,17 +29,17 @@ resource "aws_ecs_task_definition" "definition" {
     {
       "cpu" : 0,
       "dockerLabels" : {
-        "APP" : "${upper(var.app)}",
-        "ENV" : "${var.environment}"
+        "APP" : upper(var.app),
+        "ENV" : var.environment
       },
       "environment" : [
         {
           "name" : "NODE_ENV",
-          "value" : "${var.node_env}"
+          "value" : var.node_env
         },
         {
           "name" : "PORT",
-          "value" : "${tostring(local.containerPort)}"
+          "value" : tostring(local.containerPort)
         }
         #        ,{
         #        "name": "DB_HOST",
@@ -48,38 +58,38 @@ resource "aws_ecs_task_definition" "definition" {
         #        "value": "${var.database_port}"
         #      },
       ],
-      "essential" : "${var.essential}",
-      "image" : "${var.image}",
+      "essential" : var.essential,
+      "image" : var.image,
       "logConfiguration" : {
         "logDriver" : "awslogs",
         "options" : {
           "awslogs-group" : "${var.awslogs-stream-prefix}/${var.family}",
-          "awslogs-region" : "${var.region}",
-          "awslogs-stream-prefix" : "${var.awslogs-stream-prefix}"
+          "awslogs-region" : var.region,
+          "awslogs-stream-prefix" : var.awslogs-stream-prefix
         }
       },
       "mountPoints" : [
         {
           "sourceVolume" : "bin",
-          "containerPath" : "${var.bin-containerPath}",
+          "containerPath" : var.bin-containerPath,
           "readOnly" : true
         },
         {
           "sourceVolume" : "config",
-          "containerPath" : "${var.config-containerPath}",
+          "containerPath" : var.config-containerPath,
           "readOnly" : true
         },
         {
           "sourceVolume" : "logs",
-          "containerPath" : "${var.logs-containerPath}",
+          "containerPath" : var.logs-containerPath,
           "readOnly" : false
         }
       ],
-      "name" : "${local.container_name}",
+      "name" : local.container_name,
       "portMappings" : [
         {
-          "containerPort" : "${local.containerPort}",
-          "hostPort" : "${local.hostPort}",
+          "containerPort" : local.containerPort,
+          "hostPort" : local.hostPort,
           "name" : "${local.container_name}-${var.containerPort}-${var.protocol}",
           "protocol" : "tcp"
         }
@@ -89,7 +99,7 @@ resource "aws_ecs_task_definition" "definition" {
       #        "name": "DB_PASS",
       #        "valueFrom": "${var.db_pass}"
       #      },
-      "readonlyRootFilesystem" : "${var.readonlyRootFilesystem}",
+      "readonlyRootFilesystem" : var.readonlyRootFilesystem,
       "volumesFrom" : [],
       "workingDirectory" : "/app"
     }

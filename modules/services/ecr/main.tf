@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 resource "aws_ecr_repository" "repository" {
   name                 = var.name
   force_delete         = var.force_delete

@@ -63,7 +63,3 @@ variable "service" {
   default = "ws-mxv"
 }
 
-variable "folder_name" {
-  type    = string
-  default = "/"
-}

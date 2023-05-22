@@ -1,13 +1,16 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.64.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.64.0 |
 
 ## Modules
 
@@ -36,7 +39,6 @@ No modules.
 | <a name="input_managed-by"></a> [managed-by](#input\_managed-by) | (optional) Environment of the resource. Value appears as a tag with key Environment | `string` | `"Terraform"` | no |
 | <a name="input_owner"></a> [owner](#input\_owner) | (optional) Owner of the resource. Value appears as a tag with key Owner | `string` | `"Jesse Gersenson"` | no |
 | <a name="input_service"></a> [service](#input\_service) | (optional) Service which uses this resource. Value appears as a tag with key Service | `string` | `"my-service"` | no |
-| <a name="input_service-discovery-namespace-arn"></a> [service-discovery-namespace-arn](#input\_service-discovery-namespace-arn) | The ARN that Amazon Route 53 assigns to the namespace when you create it. See https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/service_discovery_http_namespace.html | `string` | `"development"` | no |
 
 ## Outputs
 

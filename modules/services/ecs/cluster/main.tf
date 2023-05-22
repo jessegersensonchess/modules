@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 resource "aws_ecs_cluster_capacity_providers" "capacity-providers" {
   cluster_name       = aws_ecs_cluster.cluster.name
   capacity_providers = var.capacity-providers

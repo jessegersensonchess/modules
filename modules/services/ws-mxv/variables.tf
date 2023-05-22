@@ -209,12 +209,6 @@ variable "force_new_deployment" {
   description = "(Optional) Enable to force a new task deployment of the service. This can be used to update tasks to use a newer Docker image with same image/tag combination (e.g., myimage:latest), roll Fargate tasks onto a newer platform version, or immediately deploy ordered_placement_strategy and placement_constraints updates."
 }
 
-variable "description" {
-  type        = string
-  default     = "my-description"
-  description = "(optional) Description of resource. Value appears as a tag with key Description"
-}
-
 variable "environment" {
   type        = string
   default     = "my-environment"

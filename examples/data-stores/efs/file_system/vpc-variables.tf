@@ -8,9 +8,9 @@ variable "network_basename" {
   default = "terratest-disposable"
 }
 
-variable "availability_zones" {
-  default = ["eu-west-2a", "eu-west-2b"]
-}
+#variable "availability_zones" {
+#  default = ["eu-west-2a", "eu-west-2b"]
+#}
 
 
 variable "base_subnet" {

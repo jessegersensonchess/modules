@@ -1,13 +1,16 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.64.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.64.0 |
 
 ## Modules
 
@@ -38,7 +41,6 @@ No requirements.
 | <a name="input_config-containerPath"></a> [config-containerPath](#input\_config-containerPath) | path to the config folder, as seen from inside the container. used in task definition for mounting the /config EFS volume | `string` | `"/app/config/local"` | no |
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | Port on the container to associate with the load balancer. | `number` | `1443` | no |
 | <a name="input_deregistration_delay"></a> [deregistration\_delay](#input\_deregistration\_delay) | Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. | `number` | `300` | no |
-| <a name="input_description"></a> [description](#input\_description) | (optional) Description of resource. Value appears as a tag with key Description | `string` | `"my-description"` | no |
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Number of instances of the task definition. | `number` | `0` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | (optional) Environment of the resource. Value appears as a tag with key Environment | `string` | `"my-environment"` | no |
 | <a name="input_execution_role_arn"></a> [execution\_role\_arn](#input\_execution\_role\_arn) | ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume | `string` | `"my-execution_role_arn"` | no |

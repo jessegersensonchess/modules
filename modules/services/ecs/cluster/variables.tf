@@ -28,12 +28,12 @@ variable "logging" {
   description = "The log setting to use for redirecting logs for your execute command results. Valid values are NONE, DEFAULT, and OVERRIDE."
 }
 
-variable "service-discovery-namespace-arn" {
-  type        = string
-  default     = "development"
-  description = "The ARN that Amazon Route 53 assigns to the namespace when you create it. See https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/service_discovery_http_namespace.html"
-}
-
+#variable "service-discovery-namespace-arn" {
+#  type        = string
+#  default     = "development"
+#  description = "The ARN that Amazon Route 53 assigns to the namespace when you create it. See https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/service_discovery_http_namespace.html"
+#}
+#
 variable "service" {
   type        = string
   default     = "my-service"

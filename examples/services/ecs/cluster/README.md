@@ -34,8 +34,7 @@ No resources.
 | <a name="input_managed-by"></a> [managed-by](#input\_managed-by) | n/a | `string` | `"Terraform"` | no |
 | <a name="input_owner"></a> [owner](#input\_owner) | n/a | `string` | `"Jesse Gersenson"` | no |
 | <a name="input_region"></a> [region](#input\_region) | n/a | `string` | `"eu-west-2"` | no |
-| <a name="input_service"></a> [service](#input\_service) | n/a | `string` | `"my-service"` | no |
-| <a name="input_service-discovery-namespace-arn"></a> [service-discovery-namespace-arn](#input\_service-discovery-namespace-arn) | n/a | `string` | `"development"` | no |
+| <a name="input_service"></a> [service](#input\_service) | variable "service-discovery-namespace-arn" { type    = string default = "development" } | `string` | `"my-service"` | no |
 
 ## Outputs
 

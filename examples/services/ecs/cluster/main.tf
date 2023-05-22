@@ -32,15 +32,15 @@ locals {
 
 module "cluster" {
   #  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/cluster?ref=v0.0.20"
-  source                          = "../../../../modules/services/ecs/cluster"
-  description                     = "${local.environment} cluster for the ${local.service} service"
-  service                         = local.service
-  cluster-name                    = local.service
-  environment                     = local.environment
-  service-discovery-namespace-arn = local.environment
-  owner                           = local.owner
-  containerInsights-value         = local.containerInsights-value
-  capacity-providers              = local.capacity-providers
-  default-capacity-provider       = local.default-capacity-provider
+  source       = "../../../../modules/services/ecs/cluster"
+  description  = "${local.environment} cluster for the ${local.service} service"
+  service      = local.service
+  cluster-name = local.service
+  environment  = local.environment
+  #service-discovery-namespace-arn = local.environment
+  owner                     = local.owner
+  containerInsights-value   = local.containerInsights-value
+  capacity-providers        = local.capacity-providers
+  default-capacity-provider = local.default-capacity-provider
 }
 

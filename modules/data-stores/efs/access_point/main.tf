@@ -1,13 +1,21 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 resource "aws_efs_access_point" "path" {
   file_system_id = var.filesystem_id
 
   tags = {
-    Name           = var.path
-    Owner          = var.owner
-    Service        = var.service
-    Env            = var.environment
-    safe_to_delete = "yes"
-    Managed_By     = "Terraform"
+    Name    = var.path
+    Owner   = var.owner
+    Service = var.service
+    Env     = var.environment
   }
 
   posix_user {

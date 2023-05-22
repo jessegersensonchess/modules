@@ -12,9 +12,9 @@ data "aws_region" "current" {
 }
 
 module "vpc" {
-  source                               = "../../../modules/network/vpc"
-  region                               = var.region
-  availability_zones                   = ["${var.region}a", "${var.region}b"]
+  source = "../../../modules/network/vpc"
+  region = var.region
+  #  availability_zones                   = ["${var.region}a", "${var.region}b"]
   network_basename                     = var.network_basename
   environment                          = var.environment
   base_subnet                          = var.base_subnet

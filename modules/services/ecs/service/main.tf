@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 resource "aws_ecs_service" "service" {
   name            = var.name
   cluster         = var.cluster
@@ -17,7 +27,6 @@ resource "aws_ecs_service" "service" {
   force_new_deployment = var.force_new_deployment
 
   triggers = {
-    #redeployment = timestamp()
     container_port   = var.container_port
     target_group_arn = var.target_group_arn
     control_value    = var.control_value

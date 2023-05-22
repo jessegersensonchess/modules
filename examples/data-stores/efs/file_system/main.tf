@@ -19,12 +19,12 @@ data "aws_region" "current" {
 }
 
 module "vpc" {
-  source             = "../../../../modules/network/vpc"
-  region             = var.region
-  availability_zones = ["${var.region}a", "${var.region}b"]
-  network_basename   = var.network_basename
-  environment        = var.environment
-  base_subnet        = local.base_subnet
+  source = "../../../../modules/network/vpc"
+  region = var.region
+  #availability_zones = ["${var.region}a", "${var.region}b"]
+  network_basename = var.network_basename
+  environment      = var.environment
+  base_subnet      = local.base_subnet
 }
 
 module "efs" {
@@ -36,7 +36,6 @@ module "efs" {
   performance_mode = var.performance_mode
   throughput_mode  = var.throughput_mode
   managed_by       = var.managed_by
-  folder_name      = var.folder_name
 
   public_subnet_a = module.vpc.public_subnet_a
   public_subnet_b = module.vpc.public_subnet_b

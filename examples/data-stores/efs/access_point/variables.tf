@@ -53,11 +53,11 @@ variable "logging" {
   default = "DEFAULT" # NONE DEFAULT OVERRIDE
 }
 
-variable "service-discovery-namespace-arn" {
-  type    = string
-  default = "development"
-}
-
+#variable "service-discovery-namespace-arn" {
+#  type    = string
+#  default = "development"
+#}
+#
 variable "service" {
   type    = string
   default = "my-service"

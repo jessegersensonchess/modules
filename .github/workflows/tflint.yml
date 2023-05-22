@@ -1,0 +1,23 @@
+name: Terraform linter
+  
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+  
+jobs:
+
+  tflint:
+    runs-on: ubuntu-latest
+    name: tflint linter
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: tflint
+        run: |
+          docker run -it --rm -w /data -v $(pwd):/data ghcr.io/terraform-linters/tflint --recursive --minimum-failure-severity error
+
+

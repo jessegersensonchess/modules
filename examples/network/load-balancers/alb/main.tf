@@ -22,12 +22,11 @@ data "aws_region" "current" {
 
 #### vpc is required to make a load balancer ####
 module "vpc" {
-  source             = "../../../../modules/network/vpc"
-  region             = local.region
-  availability_zones = ["${local.region}a", "${local.region}b"]
-  network_basename   = local.network_basename
-  environment        = var.environment
-  base_subnet        = local.base_subnet
+  source           = "../../../../modules/network/vpc"
+  region           = local.region
+  network_basename = local.network_basename
+  environment      = var.environment
+  base_subnet      = local.base_subnet
 }
 
 module "load-balancer" {

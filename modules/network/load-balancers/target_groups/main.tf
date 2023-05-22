@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 resource "aws_lb_target_group" "target_group" {
   deregistration_delay = var.deregistration_delay
 
@@ -35,10 +45,11 @@ resource "aws_lb_target_group" "target_group" {
   }
 
   tags = {
-    safe_to_delete = var.safe_to_delete
-    Managed_By     = var.managed_by
-    Owner          = var.owner
-    Service        = var.target_group_name
-    Env            = var.environment
+    safe_to_delete    = var.safe_to_delete
+    Managed_By        = var.managed_by
+    Owner             = var.owner
+    Service           = var.target_group_name
+    Target_group_name = var.target_group_name
+    Env               = var.environment
   }
 }

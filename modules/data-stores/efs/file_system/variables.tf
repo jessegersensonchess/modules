@@ -45,17 +45,17 @@ variable "security_groups" {
   description = "security groups with access to this EFS"
 }
 
-variable "subnet_id" {
-  type        = string
-  default     = "my-subnet"
-  description = "subnet name"
-}
+#variable "subnet_id" {
+#  type        = string
+#  default     = "my-subnet"
+#  description = "subnet name"
+#}
 
-variable "filesystem_id" {
-  type        = string
-  default     = "my-subnet"
-  description = "aws_efs_file_system.filesystem.id"
-}
+#variable "filesystem_id" {
+#  type        = string
+#  default     = "my-filesystem_id"
+#  description = "aws_efs_file_system.filesystem.id"
+#}
 
 variable "owner" {
   type        = string
@@ -75,8 +75,3 @@ variable "service" {
   description = "service which created this EFS. Value appears as a meta tag with key Service"
 }
 
-variable "folder_name" {
-  type        = string
-  default     = "/"
-  description = "path for mounting EFS. Review implementation before changing this value"
-}

@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 resource "aws_acm_certificate" "ssl-certificate" {
   domain_name   = var.domain-name
   key_algorithm = var.key_algorithm
@@ -18,6 +28,7 @@ resource "aws_acm_certificate" "ssl-certificate" {
     Environment = var.environment
     Service     = var.service
     Owner       = var.owner
+    Managed_By  = var.managed_by
   }
 
   validation_method = var.validation-method

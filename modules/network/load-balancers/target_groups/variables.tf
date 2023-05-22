@@ -142,12 +142,6 @@ variable "owner" {
   description = "(optional) Owner of the resource. Value appears as a tag with key Owner"
 }
 
-variable "service" {
-  type        = string
-  default     = "my service"
-  description = "(optional) Service which uses this resource. Value appears as a  tag with key Service"
-}
-
 variable "safe_to_delete" {
   type        = string
   default     = "yes"

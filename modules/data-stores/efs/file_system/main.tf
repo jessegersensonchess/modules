@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
+}
+
 resource "aws_efs_file_system" "filesystem" {
   encrypted        = var.encrypted
   throughput_mode  = var.throughput_mode
