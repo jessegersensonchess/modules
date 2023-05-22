@@ -130,7 +130,6 @@ module "task-definition" {
   config-containerPath   = var.config-containerPath
   memory                 = var.task-definition-memory
   cpu                    = var.task-definition-cpu
-  awslogs-region         = local.region
   region                 = local.region
   node_env               = local.environment
   container_name         = "container-${local.service}"

@@ -25,7 +25,6 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_capacity-providers"></a> [capacity-providers](#input\_capacity-providers) | n/a | `list(string)` | <pre>[<br>  "FARGATE",<br>  "FARGATE_SPOT"<br>]</pre> | no |
-| <a name="input_cluster-name"></a> [cluster-name](#input\_cluster-name) | n/a | `string` | `"my-cluster-name"` | no |
 | <a name="input_containerInsights-value"></a> [containerInsights-value](#input\_containerInsights-value) | n/a | `string` | `"disabled"` | no |
 | <a name="input_created-by"></a> [created-by](#input\_created-by) | n/a | `string` | `"Terraform"` | no |
 | <a name="input_default-capacity-provider"></a> [default-capacity-provider](#input\_default-capacity-provider) | n/a | `string` | `"FARGATE_SPOT"` | no |

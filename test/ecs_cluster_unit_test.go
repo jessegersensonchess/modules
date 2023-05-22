@@ -21,8 +21,8 @@ func TestUnitEcsCluster(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"service":      fmt.Sprintf("ecs-service-%s", uniqueId),
-			"cluster-name": fmt.Sprintf("ecs-cluster-%s", uniqueId),
+			"service": fmt.Sprintf("ecs-service-%s", uniqueId),
+			//			"cluster-name": fmt.Sprintf("ecs-cluster-%s", uniqueId),
 		},
 	}
 

@@ -1,32 +1,34 @@
 terraform {
   # This module is tested with Terraform 1.x.x. However, to make upgrading easier, we set 1.0.0 as the minimum version.
   required_version = ">= 1.0.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.64.0"
+    }
+  }
 }
 
 provider "aws" {
   region = var.region # "eu-west-2"
+
 }
 
 
 locals {
-  environment                = var.environment
-  owner                      = var.owner
-  service                    = var.service
-  region                     = var.region
-  enable_deletion_protection = false
+  environment = var.environment
+  owner       = var.owner
+  service     = var.service
 
-  any_port     = 0
-  any_protocol = "-1"
+  #any_port = 0
 
   containerInsights-value   = "disabled"
   capacity-providers        = ["FARGATE_SPOT"]
   default-capacity-provider = "FARGATE_SPOT"
-  safe_to_delete-listener   = "yes"
-  managed_by                = "Terraform"
-  force_delete              = true
-  safe_to_delete            = true
-  lb_listener_port          = 443
-  target-group-port         = 1230
+  #managed_by                = "Terraform"
+  #safe_to_delete            = true
+  #lb_listener_port          = 443
+  #target-group-port         = 1230
 }
 
 

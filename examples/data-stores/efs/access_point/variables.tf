@@ -3,10 +3,10 @@ variable "region" {
   default = "eu-west-2"
 }
 
-variable "cluster-name" {
-  type    = string
-  default = "my-cluster-name"
-}
+#variable "cluster-name" {
+#  type    = string
+#  default = "my-cluster-name"
+#}
 
 variable "description" {
   type    = string

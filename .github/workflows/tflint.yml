@@ -18,6 +18,6 @@ jobs:
 
       - name: tflint
         run: |
-          docker run -i --rm -w /data -v $(pwd):/data ghcr.io/terraform-linters/tflint --recursive --minimum-failure-severity error
+          docker run -i --rm -w /data -v $(pwd):/data ghcr.io/terraform-linters/tflint -f compact --recursive --minimum-failure-severity error
 
 
