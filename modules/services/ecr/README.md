@@ -32,7 +32,7 @@ No modules.
 | <a name="input_image_tag_mutability"></a> [image\_tag\_mutability](#input\_image\_tag\_mutability) | (Optional) The tag mutability setting for the repository. Must be either: MUTABLE or IMMUTABLE | `string` | `"MUTABLE"` | no |
 | <a name="input_managed_by"></a> [managed\_by](#input\_managed\_by) | entity managing this resource. Value appears as a meta tag with key Managed\_By | `string` | `"Terraform"` | no |
 | <a name="input_name"></a> [name](#input\_name) | ECR repository name | `string` | `"default-name"` | no |
-| <a name="input_scan_on_push"></a> [scan\_on\_push](#input\_scan\_on\_push) | Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false) | `bool` | `false` | no |
+| <a name="input_scan_on_push"></a> [scan\_on\_push](#input\_scan\_on\_push) | Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false) | `bool` | `true` | no |
 
 ## Outputs
 
