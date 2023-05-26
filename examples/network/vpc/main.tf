@@ -13,14 +13,9 @@ provider "aws" {
   region = var.region
 }
 
-#data "aws_region" "current" {
-#  name = var.region
-#}
-#
 module "vpc" {
-  source = "../../../modules/network/vpc"
-  region = var.region
-  #  availability_zones                   = ["${var.region}a", "${var.region}b"]
+  source                               = "../../../modules/network/vpc"
+  region                               = var.region
   network_basename                     = var.network_basename
   environment                          = var.environment
   base_subnet                          = var.base_subnet

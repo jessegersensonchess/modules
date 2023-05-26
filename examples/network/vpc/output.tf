@@ -34,5 +34,3 @@ output "name" {
   value = module.vpc.output.tags["Name"]
 }
 
-
-
