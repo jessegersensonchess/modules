@@ -1,8 +1,8 @@
-variable "public_subnet_a" {
+variable "subnet_a" {
   type    = string
   default = "mysubnet"
 }
-variable "public_subnet_b" {
+variable "subnet_b" {
   type    = string
   default = "my-subnet"
 }

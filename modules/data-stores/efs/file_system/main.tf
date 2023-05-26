@@ -25,12 +25,12 @@ resource "aws_efs_file_system" "filesystem" {
 
 resource "aws_efs_mount_target" "mount_target_a" {
   file_system_id  = aws_efs_file_system.filesystem.id
-  subnet_id       = var.public_subnet_a
+  subnet_id       = var.subnet_a
   security_groups = var.security_groups
 }
 
 resource "aws_efs_mount_target" "mount_target_b" {
   file_system_id  = aws_efs_file_system.filesystem.id
-  subnet_id       = var.public_subnet_b
+  subnet_id       = var.subnet_b
   security_groups = var.security_groups
 }

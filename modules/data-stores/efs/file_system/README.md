@@ -33,11 +33,11 @@ No modules.
 | <a name="input_managed_by"></a> [managed\_by](#input\_managed\_by) | entity managing this resource. Value appears as a meta tag with key Managed\_By | `string` | `"Terraform"` | no |
 | <a name="input_owner"></a> [owner](#input\_owner) | owner of this EFS | `string` | `"Jesse Gersenson"` | no |
 | <a name="input_performance_mode"></a> [performance\_mode](#input\_performance\_mode) | defines EFS disk performance | `string` | `"generalPurpose"` | no |
-| <a name="input_public_subnet_a"></a> [public\_subnet\_a](#input\_public\_subnet\_a) | public subnet | `string` | `"mysubnet"` | no |
-| <a name="input_public_subnet_b"></a> [public\_subnet\_b](#input\_public\_subnet\_b) | public subnet | `string` | `"my-subnet"` | no |
 | <a name="input_safe_to_delete"></a> [safe\_to\_delete](#input\_safe\_to\_delete) | informational only. Used to inform AWS admins whether this resource can be deleted. Value appears as a meta tag with key safe\_to\_delete | `string` | `"yes"` | no |
 | <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | security groups with access to this EFS | `list(string)` | <pre>[<br>  "security_group1",<br>  "security_group2"<br>]</pre> | no |
 | <a name="input_service"></a> [service](#input\_service) | service which created this EFS. Value appears as a meta tag with key Service | `string` | `"ws-mxv"` | no |
+| <a name="input_subnet_a"></a> [subnet\_a](#input\_subnet\_a) | public subnet | `string` | `"mysubnet"` | no |
+| <a name="input_subnet_b"></a> [subnet\_b](#input\_subnet\_b) | public subnet | `string` | `"my-subnet"` | no |
 | <a name="input_throughput_mode"></a> [throughput\_mode](#input\_throughput\_mode) | defines EFS disk throughput performance | `string` | `"bursting"` | no |
 
 ## Outputs

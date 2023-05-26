@@ -37,8 +37,8 @@ module "efs" {
   throughput_mode  = var.throughput_mode
   managed_by       = var.managed_by
 
-  public_subnet_a = module.vpc.public_subnet_a
-  public_subnet_b = module.vpc.public_subnet_b
+  subnet_a        = module.vpc.public_subnet_a
+  subnet_b        = module.vpc.public_subnet_b
   security_groups = [] #var.security_groups
 }
 

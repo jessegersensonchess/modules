@@ -43,14 +43,14 @@
 | <a name="input_performance_mode"></a> [performance\_mode](#input\_performance\_mode) | n/a | `string` | `"generalPurpose"` | no |
 | <a name="input_private_subnet_a_map_public_ip_on_launch"></a> [private\_subnet\_a\_map\_public\_ip\_on\_launch](#input\_private\_subnet\_a\_map\_public\_ip\_on\_launch) | n/a | `bool` | `false` | no |
 | <a name="input_private_subnet_b_map_public_ip_on_launch"></a> [private\_subnet\_b\_map\_public\_ip\_on\_launch](#input\_private\_subnet\_b\_map\_public\_ip\_on\_launch) | n/a | `bool` | `false` | no |
-| <a name="input_public_subnet_a"></a> [public\_subnet\_a](#input\_public\_subnet\_a) | n/a | `string` | `"mysubnet"` | no |
 | <a name="input_public_subnet_a_map_public_ip_on_launch"></a> [public\_subnet\_a\_map\_public\_ip\_on\_launch](#input\_public\_subnet\_a\_map\_public\_ip\_on\_launch) | n/a | `bool` | `true` | no |
-| <a name="input_public_subnet_b"></a> [public\_subnet\_b](#input\_public\_subnet\_b) | n/a | `string` | `"my-subnet"` | no |
 | <a name="input_public_subnet_b_map_public_ip_on_launch"></a> [public\_subnet\_b\_map\_public\_ip\_on\_launch](#input\_public\_subnet\_b\_map\_public\_ip\_on\_launch) | n/a | `bool` | `true` | no |
 | <a name="input_region"></a> [region](#input\_region) | n/a | `string` | `"eu-west-2"` | no |
 | <a name="input_safe_to_delete"></a> [safe\_to\_delete](#input\_safe\_to\_delete) | n/a | `string` | `"yes"` | no |
 | <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | n/a | `list(string)` | <pre>[<br>  "security_group1",<br>  "security_group2"<br>]</pre> | no |
 | <a name="input_service"></a> [service](#input\_service) | n/a | `string` | `"ws-mxv"` | no |
+| <a name="input_subnet_a"></a> [subnet\_a](#input\_subnet\_a) | n/a | `string` | `"mysubnet"` | no |
+| <a name="input_subnet_b"></a> [subnet\_b](#input\_subnet\_b) | n/a | `string` | `"my-subnet"` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | n/a | `string` | `"my-subnet"` | no |
 | <a name="input_throughput_mode"></a> [throughput\_mode](#input\_throughput\_mode) | n/a | `string` | `"bursting"` | no |
 

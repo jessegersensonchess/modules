@@ -52,8 +52,8 @@ module "efs" {
   source          = "../../data-stores/efs/file_system"
   service         = local.service
   environment     = local.environment
-  public_subnet_a = var.public_subnet_a
-  public_subnet_b = var.public_subnet_b
+  subnet_a        = var.public_subnet_a
+  subnet_b        = var.public_subnet_b
   security_groups = var.security_groups
 }
 
