@@ -16,7 +16,6 @@ locals {
 }
 
 module "ecr" {
-  # ${path.module}
   source       = "../../services/ecr"
   name         = local.service
   environment  = local.environment

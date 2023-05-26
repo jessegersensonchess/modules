@@ -170,7 +170,7 @@ resource "aws_route_table" "private_route_table_b" {
   tags = {
     Name        = "${local.name}-Route-Table-Private-B"
     Environment = local.environment
-    Managed_By  = "Terraform"
+    Managed_By  = var.managed_by
   }
 }
 
