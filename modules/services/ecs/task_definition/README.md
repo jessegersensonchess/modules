@@ -39,6 +39,7 @@ No modules.
 | <a name="input_cpu"></a> [cpu](#input\_cpu) | Number of cpu units used by the task. If the requires\_compatibilities is FARGATE this field is required. | `number` | `256` | no |
 | <a name="input_description"></a> [description](#input\_description) | basic description of resource. Value appears as a meta tag with key Description | `string` | `"my-description"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | (optional) Environment of the resource. Value appears as a tag with key Environment | `string` | `"dev"` | no |
+| <a name="input_environment-variables"></a> [environment-variables](#input\_environment-variables) | environment variables for the container | `map(string)` | <pre>{<br>  "NODE_ENV": "production",<br>  "PORT": "8080"<br>}</pre> | no |
 | <a name="input_essential"></a> [essential](#input\_essential) | If the essential parameter of a container is marked as true, and that container fails or stops for any reason, all other containers that are part of the task are stopped. If the essential parameter of a container is marked as false, its failure doesn't affect the rest of the containers in a task. https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html | `bool` | `true` | no |
 | <a name="input_execution_role_arn"></a> [execution\_role\_arn](#input\_execution\_role\_arn) | ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume | `string` | `"my-execution_role_arn"` | no |
 | <a name="input_family"></a> [family](#input\_family) | A unique name for your task definition. | `string` | `"TSK-my-family"` | no |
@@ -62,6 +63,7 @@ No modules.
 | <a name="input_root_directory-logs"></a> [root\_directory-logs](#input\_root\_directory-logs) | root directory of 'logs' volume | `string` | `"/"` | no |
 | <a name="input_safe_to_delete"></a> [safe\_to\_delete](#input\_safe\_to\_delete) | (optional) Can this resource be destroyed? Value appears as a tag with key safe\_to\_delete | `bool` | `false` | no |
 | <a name="input_service"></a> [service](#input\_service) | (optional) Service which uses this resource. Value appears as a tag with key Service | `string` | `"my-service"` | no |
+| <a name="input_workingDirectory"></a> [workingDirectory](#input\_workingDirectory) | container's working directory | `string` | `"/app"` | no |
 
 ## Outputs
 

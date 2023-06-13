@@ -43,6 +43,7 @@
 | <a name="input_deregistration_delay"></a> [deregistration\_delay](#input\_deregistration\_delay) | Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. | `number` | `300` | no |
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Number of instances of the task definition. | `number` | `0` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | (optional) Environment of the resource. Value appears as a tag with key Environment | `string` | `"my-environment"` | no |
+| <a name="input_environment-variables"></a> [environment-variables](#input\_environment-variables) | environment variables for the container | `map(string)` | <pre>{<br>  "BOO": "baz",<br>  "FOO": "bar"<br>}</pre> | no |
 | <a name="input_execution_role_arn"></a> [execution\_role\_arn](#input\_execution\_role\_arn) | ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume | `string` | `"my-execution_role_arn"` | no |
 | <a name="input_force_delete"></a> [force\_delete](#input\_force\_delete) | (Optional) If true, will delete the repository even if it contains images | `bool` | `false` | no |
 | <a name="input_force_new_deployment"></a> [force\_new\_deployment](#input\_force\_new\_deployment) | (Optional) Enable to force a new task deployment of the service. This can be used to update tasks to use a newer Docker image with same image/tag combination (e.g., myimage:latest), roll Fargate tasks onto a newer platform version, or immediately deploy ordered\_placement\_strategy and placement\_constraints updates. | `bool` | `true` | no |
@@ -75,6 +76,7 @@
 | <a name="input_task-definition-hostPort"></a> [task-definition-hostPort](#input\_task-definition-hostPort) | n/a | `number` | `1443` | no |
 | <a name="input_task-definition-memory"></a> [task-definition-memory](#input\_task-definition-memory) | n/a | `number` | `512` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | n/a | `string` | `"my-vpc-id"` | no |
+| <a name="input_workingDirectory"></a> [workingDirectory](#input\_workingDirectory) | container's working directory | `string` | `"/app"` | no |
 
 ## Outputs
 

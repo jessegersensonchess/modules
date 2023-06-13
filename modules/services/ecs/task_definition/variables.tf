@@ -4,6 +4,12 @@ variable "access_point_id-logs" {
   description = "access point id of 'logs' EFS"
 }
 
+variable "workingDirectory" {
+  type        = string
+  default     = "/app"
+  description = "container's working directory"
+}
+
 variable "bin-containerPath" {
   type        = string
   default     = "/app/bin/cert"
@@ -214,3 +220,11 @@ variable "service" {
   description = "(optional) Service which uses this resource. Value appears as a tag with key Service"
 }
 
+variable "environment-variables" {
+  type = map(string)
+  default = {
+    "NODE_ENV" = "production"
+    "PORT"     = "8080"
+  }
+  description = "environment variables for the container"
+}

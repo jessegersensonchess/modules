@@ -33,30 +33,11 @@ resource "aws_ecs_task_definition" "definition" {
         "ENV" : var.environment
       },
       "environment" : [
+        for key, value in var.environment-variables :
         {
-          "name" : "NODE_ENV",
-          "value" : var.node_env
-        },
-        {
-          "name" : "PORT",
-          "value" : tostring(local.containerPort)
+          "name" : key,
+          "value" : value
         }
-        #        ,{
-        #        "name": "DB_HOST",
-        #        "value": "${var.database_hostname}"
-        #      },
-        #      {
-        #        "name": "DB_USER",
-        #        "value": "${var.database_user}"
-        #      },
-        #      {
-        #        "name": "DB",
-        #        "value": "${var.database}"
-        #      },
-        #      {
-        #        "name": "DB_PORT",
-        #        "value": "${var.database_port}"
-        #      },
       ],
       "essential" : var.essential,
       "image" : var.image,
@@ -101,7 +82,7 @@ resource "aws_ecs_task_definition" "definition" {
       #      },
       "readonlyRootFilesystem" : var.readonlyRootFilesystem,
       "volumesFrom" : [],
-      "workingDirectory" : "/app"
+      "workingDirectory" : var.workingDirectory
     }
   ])
   cpu                      = var.cpu

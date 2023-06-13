@@ -4,6 +4,12 @@ variable "image_tag" {
   description = "docker image tag to use with service"
 }
 
+variable "workingDirectory" {
+  type        = string
+  default     = "/app"
+  description = "container's working directory"
+}
+
 variable "health_check_path" {
   type        = string
   default     = "my-health-check-path"
@@ -233,4 +239,12 @@ variable "owner" {
   description = "(optional) Owner of the resource. Value appears as a tag with key Owner"
 }
 
+variable "environment-variables" {
+  type = map(string)
+  default = {
+    "FOO" = "bar"
+    "BOO" = "baz"
+  }
+  description = "environment variables for the container"
+}
 
