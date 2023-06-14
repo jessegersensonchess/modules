@@ -91,4 +91,5 @@
 | <a name="output_efs-filesystem"></a> [efs-filesystem](#output\_efs-filesystem) | All EFS output. Depreciated, this output will be removed. Use 'output' |
 | <a name="output_efs-filesystem-id"></a> [efs-filesystem-id](#output\_efs-filesystem-id) | EFS filesystem ID |
 | <a name="output_output"></a> [output](#output\_output) | All EFS output |
+| <a name="output_target_group"></a> [target\_group](#output\_target\_group) | target group |
 <!-- END_TF_DOCS -->

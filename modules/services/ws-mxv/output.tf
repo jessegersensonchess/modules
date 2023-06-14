@@ -33,3 +33,8 @@ output "efs-accesspoint-logs" {
   description = "Access point id for /logs"
 }
 
+output "target_group" {
+  value       = module.target-group.target_group
+  description = "target group"
+}
+
