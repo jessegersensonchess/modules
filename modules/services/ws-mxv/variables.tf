@@ -117,6 +117,12 @@ variable "desired_count" {
   description = "Number of instances of the task definition."
 }
 
+variable "readonlyRootFilesystem" {
+  type        = bool
+  default     = true
+  description = "When this parameter is true, the container is given read-only access to its root file system. This parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the --read-only option to docker run"
+}
+
 variable "task-definition-hostPort" {
   type        = number
   default     = 1443

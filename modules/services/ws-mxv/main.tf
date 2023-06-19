@@ -140,5 +140,6 @@ module "task-definition" {
   safe_to_delete         = var.safe_to_delete
   workingDirectory       = var.workingDirectory
   environment-variables  = var.environment-variables
+  readonlyRootFilesystem = var.readonlyRootFilesystem
 }
 
