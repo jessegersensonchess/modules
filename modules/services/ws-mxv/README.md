@@ -36,6 +36,9 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_access_point_path_bin"></a> [access\_point\_path\_bin](#input\_access\_point\_path\_bin) | efs access point path for 'bin' | `string` | `"/bin"` | no |
+| <a name="input_access_point_path_config"></a> [access\_point\_path\_config](#input\_access\_point\_path\_config) | efs access point path for 'config' | `string` | `"/config"` | no |
+| <a name="input_access_point_path_logs"></a> [access\_point\_path\_logs](#input\_access\_point\_path\_logs) | efs access point path for 'logs' | `string` | `"/logs"` | no |
 | <a name="input_assign_public_ip"></a> [assign\_public\_ip](#input\_assign\_public\_ip) | Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false | `bool` | `true` | no |
 | <a name="input_bin-containerPath"></a> [bin-containerPath](#input\_bin-containerPath) | path to the bin folder, as seen from inside the container. used in task definition for mounting the /bin EFS volume | `string` | `"/app/bin/cert"` | no |
 | <a name="input_cluster"></a> [cluster](#input\_cluster) | n/a | `string` | `"my-cluster"` | no |

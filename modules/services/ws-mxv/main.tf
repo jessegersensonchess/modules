@@ -26,7 +26,7 @@ module "ecr" {
 module "efs-access_point-bin" {
   source        = "../../data-stores/efs/access_point"
   service       = local.service
-  path          = "/bin"
+  path          = var.access_point_path_bin #"/bin"
   filesystem_id = module.efs.filesystem_id
   environment   = local.environment
 }
@@ -34,7 +34,7 @@ module "efs-access_point-bin" {
 module "efs-access_point-config" {
   source        = "../../data-stores/efs/access_point"
   service       = local.service
-  path          = "/config"
+  path          = var.access_point_path_config #"/config"
   filesystem_id = module.efs.filesystem_id
   environment   = local.environment
 }
@@ -42,7 +42,7 @@ module "efs-access_point-config" {
 module "efs-access_point-logs" {
   source        = "../../data-stores/efs/access_point"
   service       = local.service
-  path          = "/logs"
+  path          = var.access_point_path_logs #"/logs"
   filesystem_id = module.efs.filesystem_id
   environment   = local.environment
 }

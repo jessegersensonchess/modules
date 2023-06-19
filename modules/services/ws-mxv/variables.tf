@@ -3,6 +3,23 @@ variable "assign_public_ip" {
   default     = true
   description = "Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false"
 }
+variable "access_point_path_logs" {
+  type        = string
+  default     = "/logs"
+  description = "efs access point path for 'logs'"
+}
+variable "access_point_path_bin" {
+  type        = string
+  default     = "/bin"
+  description = "efs access point path for 'bin'"
+}
+
+variable "access_point_path_config" {
+  type        = string
+  default     = "/config"
+  description = "efs access point path for 'config'"
+}
+
 
 variable "image_tag" {
   type        = string
