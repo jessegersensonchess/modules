@@ -93,7 +93,7 @@ module "service" {
   environment          = local.environment
   owner                = local.owner
   force_new_deployment = var.force_new_deployment
-  control_value        = module.task-definition #timestamp() #data.aws_ecr_image.image.id
+  control_value        = data.aws_ecr_image.image.id
   assign_public_ip     = var.assign_public_ip
 
 }
