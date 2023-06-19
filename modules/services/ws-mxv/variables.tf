@@ -1,3 +1,9 @@
+variable "assign_public_ip" {
+  type        = bool
+  default     = true
+  description = "Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false"
+}
+
 variable "image_tag" {
   type        = string
   default     = "latest"

@@ -36,6 +36,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_assign_public_ip"></a> [assign\_public\_ip](#input\_assign\_public\_ip) | Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false | `bool` | `true` | no |
 | <a name="input_bin-containerPath"></a> [bin-containerPath](#input\_bin-containerPath) | path to the bin folder, as seen from inside the container. used in task definition for mounting the /bin EFS volume | `string` | `"/app/bin/cert"` | no |
 | <a name="input_cluster"></a> [cluster](#input\_cluster) | n/a | `string` | `"my-cluster"` | no |
 | <a name="input_config-containerPath"></a> [config-containerPath](#input\_config-containerPath) | path to the config folder, as seen from inside the container. used in task definition for mounting the /config EFS volume | `string` | `"/app/config/local"` | no |
