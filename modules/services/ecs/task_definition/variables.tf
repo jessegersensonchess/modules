@@ -238,3 +238,30 @@ variable "mount-points" {
   }))
   default = []
 }
+
+
+variable "volumes" {
+  description = "(Optional) A set of volume blocks that containers in your task may use"
+  type = list(object({
+    host_path = string
+    name      = string
+    docker_volume_configuration = list(object({
+      autoprovision = bool
+      driver        = string
+      driver_opts   = map(string)
+      labels        = map(string)
+      scope         = string
+    }))
+    efs_volume_configuration = list(object({
+      file_system_id          = string
+      root_directory          = string
+      transit_encryption      = string
+      transit_encryption_port = string
+      authorization_config = list(object({
+        access_point_id = string
+        iam             = string
+      }))
+    }))
+  }))
+  default = []
+}

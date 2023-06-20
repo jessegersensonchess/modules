@@ -80,6 +80,7 @@
 | <a name="input_task-definition-cpu"></a> [task-definition-cpu](#input\_task-definition-cpu) | n/a | `number` | `256` | no |
 | <a name="input_task-definition-hostPort"></a> [task-definition-hostPort](#input\_task-definition-hostPort) | n/a | `number` | `1443` | no |
 | <a name="input_task-definition-memory"></a> [task-definition-memory](#input\_task-definition-memory) | n/a | `number` | `512` | no |
+| <a name="input_volumes"></a> [volumes](#input\_volumes) | (Optional) A set of volume blocks that containers in your task may use | <pre>list(object({<br>    host_path = string<br>    name      = string<br>    docker_volume_configuration = list(object({<br>      autoprovision = bool<br>      driver        = string<br>      driver_opts   = map(string)<br>      labels        = map(string)<br>      scope         = string<br>    }))<br>    efs_volume_configuration = list(object({<br>      file_system_id          = string<br>      root_directory          = string<br>      transit_encryption      = string<br>      transit_encryption_port = string<br>      authorization_config = list(object({<br>        access_point_id = string<br>        iam             = string<br>      }))<br>    }))<br>  }))</pre> | `[]` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | n/a | `string` | `"my-vpc-id"` | no |
 | <a name="input_workingDirectory"></a> [workingDirectory](#input\_workingDirectory) | container's working directory | `string` | `"/app"` | no |
 

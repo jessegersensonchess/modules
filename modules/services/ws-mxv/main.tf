@@ -141,5 +141,6 @@ module "task-definition" {
   workingDirectory       = var.workingDirectory
   environment-variables  = var.environment-variables
   readonlyRootFilesystem = var.readonlyRootFilesystem
+  #volumes                = var.volumes
 }
 

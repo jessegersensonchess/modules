@@ -64,6 +64,7 @@ No modules.
 | <a name="input_root_directory-logs"></a> [root\_directory-logs](#input\_root\_directory-logs) | root directory of 'logs' volume | `string` | `"/"` | no |
 | <a name="input_safe_to_delete"></a> [safe\_to\_delete](#input\_safe\_to\_delete) | (optional) Can this resource be destroyed? Value appears as a tag with key safe\_to\_delete | `bool` | `false` | no |
 | <a name="input_service"></a> [service](#input\_service) | (optional) Service which uses this resource. Value appears as a tag with key Service | `string` | `"my-service"` | no |
+| <a name="input_volumes"></a> [volumes](#input\_volumes) | (Optional) A set of volume blocks that containers in your task may use | <pre>list(object({<br>    host_path = string<br>    name      = string<br>    docker_volume_configuration = list(object({<br>      autoprovision = bool<br>      driver        = string<br>      driver_opts   = map(string)<br>      labels        = map(string)<br>      scope         = string<br>    }))<br>    efs_volume_configuration = list(object({<br>      file_system_id          = string<br>      root_directory          = string<br>      transit_encryption      = string<br>      transit_encryption_port = string<br>      authorization_config = list(object({<br>        access_point_id = string<br>        iam             = string<br>      }))<br>    }))<br>  }))</pre> | `[]` | no |
 | <a name="input_workingDirectory"></a> [workingDirectory](#input\_workingDirectory) | container's working directory | `string` | `"/app"` | no |
 
 ## Outputs

@@ -18,6 +18,23 @@ locals {
   environment        = var.environment
   safe_to_delete     = var.safe_to_delete
   description        = var.description
+  mountPoints = [
+    {
+      "sourceVolume" : "bin",
+      "containerPath" : var.bin-containerPath,
+      "readOnly" : true
+    },
+    {
+      "sourceVolume" : "config",
+      "containerPath" : var.config-containerPath,
+      "readOnly" : true
+    },
+    {
+      "sourceVolume" : "logs",
+      "containerPath" : var.logs-containerPath,
+      "readOnly" : false
+    }
+  ]
 }
 
 resource "aws_cloudwatch_log_group" "log_group" {
@@ -49,23 +66,7 @@ resource "aws_ecs_task_definition" "definition" {
           "awslogs-stream-prefix" : var.awslogs-stream-prefix
         }
       },
-      "mountPoints" : [
-        {
-          "sourceVolume" : "bin",
-          "containerPath" : var.bin-containerPath,
-          "readOnly" : true
-        },
-        {
-          "sourceVolume" : "config",
-          "containerPath" : var.config-containerPath,
-          "readOnly" : true
-        },
-        {
-          "sourceVolume" : "logs",
-          "containerPath" : var.logs-containerPath,
-          "readOnly" : false
-        }
-      ],
+      "mountPoints" : local.mountPoints,
       "name" : local.container_name,
       "portMappings" : [
         {
@@ -110,8 +111,7 @@ resource "aws_ecs_task_definition" "definition" {
 
   #### volume: logs ####
   volume {
-    count = var.logs-volume-count
-    name  = var.name-logs
+    name = var.name-logs
     efs_volume_configuration {
       authorization_config {
         access_point_id = var.access_point_id-logs
@@ -125,8 +125,7 @@ resource "aws_ecs_task_definition" "definition" {
 
   #### volume: config ####
   volume {
-    count = var.config-volume-count
-    name  = var.name-config
+    name = var.name-config
     efs_volume_configuration {
       authorization_config {
         access_point_id = var.access_point_id-config
@@ -140,8 +139,7 @@ resource "aws_ecs_task_definition" "definition" {
 
   #### volume: bin ####
   volume {
-    count = var.bin-volume-count
-    name  = var.name-bin
+    name = var.name-bin
     efs_volume_configuration {
       authorization_config {
         access_point_id = var.access_point_id-bin
@@ -152,4 +150,58 @@ resource "aws_ecs_task_definition" "definition" {
       transit_encryption = "ENABLED"
     }
   }
+
+
+
+
+  dynamic "volume" {
+    for_each = var.volumes
+    content {
+      name = volume.value.name
+
+      host_path = lookup(volume.value, "host_path", null)
+
+      dynamic "docker_volume_configuration" {
+        for_each = lookup(volume.value, "docker_volume_configuration", [])
+        content {
+          autoprovision = lookup(docker_volume_configuration.value, "autoprovision", null)
+          driver        = lookup(docker_volume_configuration.value, "driver", null)
+          driver_opts   = lookup(docker_volume_configuration.value, "driver_opts", null)
+          labels        = lookup(docker_volume_configuration.value, "labels", null)
+          scope         = lookup(docker_volume_configuration.value, "scope", null)
+        }
+      }
+
+      dynamic "efs_volume_configuration" {
+        for_each = lookup(volume.value, "efs_volume_configuration", [])
+        content {
+          file_system_id          = lookup(efs_volume_configuration.value, "file_system_id", null)
+          root_directory          = lookup(efs_volume_configuration.value, "root_directory", null)
+          transit_encryption      = lookup(efs_volume_configuration.value, "transit_encryption", null)
+          transit_encryption_port = lookup(efs_volume_configuration.value, "transit_encryption_port", null)
+          dynamic "authorization_config" {
+            for_each = lookup(efs_volume_configuration.value, "authorization_config", [])
+            content {
+              access_point_id = lookup(authorization_config.value, "access_point_id", null)
+              iam             = lookup(authorization_config.value, "iam", null)
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
