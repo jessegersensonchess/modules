@@ -48,6 +48,7 @@ No modules.
 | <a name="input_image"></a> [image](#input\_image) | container image | `string` | `"my-image"` | no |
 | <a name="input_logs-containerPath"></a> [logs-containerPath](#input\_logs-containerPath) | path to the logs folder, as seen from inside the container. used in task definition for mounting the /logs EFS volume | `string` | `"/app/logs"` | no |
 | <a name="input_memory"></a> [memory](#input\_memory) | Amount (in MiB) of memory used by the task. If the requires\_compatibilities is FARGATE this field is required. | `number` | `512` | no |
+| <a name="input_mount-points"></a> [mount-points](#input\_mount-points) | Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`. The `readOnly` key is optional. | <pre>list(object({<br>    sourceVolume  = string<br>    containerPath = string<br>    readOnly      = bool<br>  }))</pre> | `[]` | no |
 | <a name="input_name-bin"></a> [name-bin](#input\_name-bin) | name of 'bin' volume | `string` | `"bin"` | no |
 | <a name="input_name-config"></a> [name-config](#input\_name-config) | name of 'config' volume | `string` | `"config"` | no |
 | <a name="input_name-logs"></a> [name-logs](#input\_name-logs) | name of 'logs' volume | `string` | `"logs"` | no |

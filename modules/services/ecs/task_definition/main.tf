@@ -110,7 +110,8 @@ resource "aws_ecs_task_definition" "definition" {
 
   #### volume: logs ####
   volume {
-    name = var.name-logs
+    count = var.logs-volume-count
+    name  = var.name-logs
     efs_volume_configuration {
       authorization_config {
         access_point_id = var.access_point_id-logs
@@ -124,7 +125,8 @@ resource "aws_ecs_task_definition" "definition" {
 
   #### volume: config ####
   volume {
-    name = var.name-config
+    count = var.config-volume-count
+    name  = var.name-config
     efs_volume_configuration {
       authorization_config {
         access_point_id = var.access_point_id-config
@@ -138,7 +140,8 @@ resource "aws_ecs_task_definition" "definition" {
 
   #### volume: bin ####
   volume {
-    name = var.name-bin
+    count = var.bin-volume-count
+    name  = var.name-bin
     efs_volume_configuration {
       authorization_config {
         access_point_id = var.access_point_id-bin

@@ -228,3 +228,13 @@ variable "environment-variables" {
   }
   description = "environment variables for the container"
 }
+
+variable "mount-points" {
+  description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`. The `readOnly` key is optional."
+  type = list(object({
+    sourceVolume  = string
+    containerPath = string
+    readOnly      = bool
+  }))
+  default = []
+}
