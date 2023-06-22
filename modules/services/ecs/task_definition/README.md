@@ -48,7 +48,7 @@ No modules.
 | <a name="input_image"></a> [image](#input\_image) | container image | `string` | `"my-image"` | no |
 | <a name="input_logs-containerPath"></a> [logs-containerPath](#input\_logs-containerPath) | path to the logs folder, as seen from inside the container. used in task definition for mounting the /logs EFS volume | `string` | `"/app/logs"` | no |
 | <a name="input_memory"></a> [memory](#input\_memory) | Amount (in MiB) of memory used by the task. If the requires\_compatibilities is FARGATE this field is required. | `number` | `512` | no |
-| <a name="input_mount-points"></a> [mount-points](#input\_mount-points) | Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`. The `readOnly` key is optional. | <pre>list(object({<br>    sourceVolume  = string<br>    containerPath = string<br>    readOnly      = bool<br>  }))</pre> | `[]` | no |
+| <a name="input_mountPoints"></a> [mountPoints](#input\_mountPoints) | Container mount points. This is a list of maps, where each map should contain a containerPath and sourceVolume. The readOnly key is optional. | <pre>list(object({<br>    sourceVolume  = string<br>    containerPath = string<br>    readOnly      = bool<br>  }))</pre> | `[]` | no |
 | <a name="input_name-bin"></a> [name-bin](#input\_name-bin) | name of 'bin' volume | `string` | `"bin"` | no |
 | <a name="input_name-config"></a> [name-config](#input\_name-config) | name of 'config' volume | `string` | `"config"` | no |
 | <a name="input_name-logs"></a> [name-logs](#input\_name-logs) | name of 'logs' volume | `string` | `"logs"` | no |
@@ -64,7 +64,6 @@ No modules.
 | <a name="input_root_directory-logs"></a> [root\_directory-logs](#input\_root\_directory-logs) | root directory of 'logs' volume | `string` | `"/"` | no |
 | <a name="input_safe_to_delete"></a> [safe\_to\_delete](#input\_safe\_to\_delete) | (optional) Can this resource be destroyed? Value appears as a tag with key safe\_to\_delete | `bool` | `false` | no |
 | <a name="input_service"></a> [service](#input\_service) | (optional) Service which uses this resource. Value appears as a tag with key Service | `string` | `"my-service"` | no |
-| <a name="input_volumes"></a> [volumes](#input\_volumes) | (Optional) A set of volume blocks that containers in your task may use | <pre>list(object({<br>    host_path = string<br>    name      = string<br>    docker_volume_configuration = list(object({<br>      autoprovision = bool<br>      driver        = string<br>      driver_opts   = map(string)<br>      labels        = map(string)<br>      scope         = string<br>    }))<br>    efs_volume_configuration = list(object({<br>      file_system_id          = string<br>      root_directory          = string<br>      transit_encryption      = string<br>      transit_encryption_port = string<br>      authorization_config = list(object({<br>        access_point_id = string<br>        iam             = string<br>      }))<br>    }))<br>  }))</pre> | `[]` | no |
 | <a name="input_workingDirectory"></a> [workingDirectory](#input\_workingDirectory) | container's working directory | `string` | `"/app"` | no |
 
 ## Outputs

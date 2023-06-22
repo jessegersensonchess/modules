@@ -9,6 +9,7 @@ terraform {
 }
 
 resource "aws_efs_access_point" "path" {
+  #count          = var.count
   file_system_id = var.filesystem_id
 
   tags = {

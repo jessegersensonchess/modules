@@ -114,20 +114,22 @@ module "target-group" {
 }
 
 module "task-definition" {
-  source                 = "../../services/ecs/task_definition"
-  image                  = "${module.ecr.url}:${var.image_tag}"
-  app                    = local.service
-  service                = local.service
-  environment            = local.environment
+  source      = "../../services/ecs/task_definition"
+  image       = "${module.ecr.url}:${var.image_tag}"
+  app         = local.service
+  service     = local.service
+  environment = local.environment
+
   file_system_id         = module.efs.filesystem_id
   access_point_id-bin    = module.efs-access_point-bin.output["id"]
   access_point_id-config = module.efs-access_point-config.output["id"]
   access_point_id-logs   = module.efs-access_point-logs.output["id"]
-  family                 = local.service
-  owner                  = local.owner
   bin-containerPath      = var.bin-containerPath
   logs-containerPath     = var.logs-containerPath
   config-containerPath   = var.config-containerPath
+
+  family                 = local.service
+  owner                  = local.owner
   memory                 = var.task-definition-memory
   cpu                    = var.task-definition-cpu
   region                 = local.region
@@ -141,6 +143,6 @@ module "task-definition" {
   workingDirectory       = var.workingDirectory
   environment-variables  = var.environment-variables
   readonlyRootFilesystem = var.readonlyRootFilesystem
-  #volumes                = var.volumes
+  mountPoints            = var.mountPoints
 }
 
