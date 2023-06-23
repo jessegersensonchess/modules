@@ -30,7 +30,7 @@ variable "capacity_provider_weight" {
 
 variable "capacity_provider_base" {
   type        = number
-  default     = 1
+  default     = 2
   description = "The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined"
 }
 
