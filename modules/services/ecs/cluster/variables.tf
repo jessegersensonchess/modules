@@ -22,6 +22,19 @@ variable "default-capacity-provider" {
   description = "Name of the default capacity provider."
 }
 
+variable "capacity_provider_weight" {
+  type        = number
+  default     = 100
+  description = "The relative percentage of the total number of launched tasks that should use the specified capacity provider. The weight value is taken into consideration after the base count of tasks has been satisfied"
+}
+
+variable "capacity_provider_base" {
+  type        = number
+  default     = 1
+  description = "The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined"
+}
+
+
 variable "logging" {
   type        = string
   default     = "DEFAULT" # NONE DEFAULT OVERRIDE

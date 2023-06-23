@@ -12,8 +12,8 @@ resource "aws_ecs_cluster_capacity_providers" "capacity-providers" {
   cluster_name       = aws_ecs_cluster.cluster.name
   capacity_providers = var.capacity-providers
   default_capacity_provider_strategy {
-    base              = 0
-    weight            = 100
+    base              = var.capacity_provider_base
+    weight            = var.capacity_provider_weight
     capacity_provider = var.default-capacity-provider
   }
 }

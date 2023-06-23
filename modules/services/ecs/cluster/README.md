@@ -29,6 +29,8 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_capacity-providers"></a> [capacity-providers](#input\_capacity-providers) | Set of names of one or more capacity providers to associate with the cluster. Valid values also include FARGATE and FARGATE\_SPOT | `list(string)` | <pre>[<br>  "FARGATE",<br>  "FARGATE_SPOT"<br>]</pre> | no |
+| <a name="input_capacity_provider_base"></a> [capacity\_provider\_base](#input\_capacity\_provider\_base) | The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined | `number` | `1` | no |
+| <a name="input_capacity_provider_weight"></a> [capacity\_provider\_weight](#input\_capacity\_provider\_weight) | The relative percentage of the total number of launched tasks that should use the specified capacity provider. The weight value is taken into consideration after the base count of tasks has been satisfied | `number` | `100` | no |
 | <a name="input_cluster-name"></a> [cluster-name](#input\_cluster-name) | Name of the cluster (up to 255 letters, numbers, hyphens, and underscores) | `string` | `"my-cluster-name"` | no |
 | <a name="input_containerInsights-value"></a> [containerInsights-value](#input\_containerInsights-value) | The value to assign to the setting. Valid values are enabled and disabled. | `string` | `"disabled"` | no |
 | <a name="input_created-by"></a> [created-by](#input\_created-by) | (optional) Entity which created the resource. Value appears as a tag with key Created\_By | `string` | `"Terraform"` | no |
