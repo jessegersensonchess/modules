@@ -52,12 +52,6 @@ variable "health_check_grace_period_seconds" {
   description = "Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers."
 }
 
-variable "launch_type" {
-  type        = string
-  default     = "FARGATE"
-  description = "Launch type on which to run your service. The valid values are EC2, FARGATE, and EXTERNAL"
-}
-
 variable "name" {
   type        = string
   default     = "service-name-here"
