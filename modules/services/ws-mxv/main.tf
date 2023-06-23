@@ -80,21 +80,24 @@ output "aws_ecr_image-image_pushed_at" {
 }
 
 module "service" {
-  source               = "../../services/ecs/service"
-  cluster              = var.cluster
-  desired_count        = var.desired_count
-  name                 = local.service
-  container_name       = module.task-definition.container_name
-  container_port       = var.container_port
-  target_group_arn     = module.target-group.target_group["arn"]
-  subnets              = var.subnets
-  task_definition      = module.task-definition.output["arn"]
-  security_groups      = var.security_groups
-  environment          = local.environment
-  owner                = local.owner
-  force_new_deployment = var.force_new_deployment
-  control_value        = data.aws_ecr_image.image.id
-  assign_public_ip     = var.assign_public_ip
+  source                                       = "../../services/ecs/service"
+  cluster                                      = var.cluster
+  desired_count                                = var.desired_count
+  name                                         = local.service
+  container_name                               = module.task-definition.container_name
+  container_port                               = var.container_port
+  target_group_arn                             = module.target-group.target_group["arn"]
+  subnets                                      = var.subnets
+  task_definition                              = module.task-definition.output["arn"]
+  security_groups                              = var.security_groups
+  environment                                  = local.environment
+  owner                                        = local.owner
+  force_new_deployment                         = var.force_new_deployment
+  control_value                                = data.aws_ecr_image.image.id
+  assign_public_ip                             = var.assign_public_ip
+  capacity_provider_strategy_base              = var.capacity_provider_strategy_base
+  capacity_provider_strategy_capacity_provider = var.capacity_provider_strategy_capacity_provider
+  capacity_provider_strategy_weight            = var.capacity_provider_strategy_weight
 
 }
 

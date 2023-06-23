@@ -41,6 +41,12 @@ resource "aws_ecs_service" "service" {
     type = var.deployment_controller-type
   }
 
+  capacity_provider_strategy {
+    base              = var.capacity_provider_strategy_base
+    capacity_provider = var.capacity_provider_strategy_capacity_provider
+    weight            = var.capacity_provider_strategy_weight
+  }
+
   load_balancer {
     container_name   = var.container_name
     container_port   = var.container_port

@@ -148,3 +148,22 @@ variable "environment" {
   description = "(optional) Environment of the resource. Value appears as a tag with key Environment"
 }
 
+variable "capacity_provider_strategy_base" {
+  type        = number
+  default     = 2
+  description = "Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined"
+}
+
+variable "capacity_provider_strategy_capacity_provider" {
+  type        = string
+  default     = "FARGATE_SPOT"
+  description = "Short name of the capacity provider."
+
+}
+
+variable "capacity_provider_strategy_weight" {
+  type        = number
+  default     = 100
+  description = "Relative percentage of the total number of launched tasks that should use the specified capacity provider."
+}
+
