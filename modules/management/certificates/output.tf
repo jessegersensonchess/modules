@@ -1,7 +1,6 @@
 output "ssl-certificate-domain-name" {
   value       = aws_acm_certificate.ssl-certificate.domain_name
   description = "Domain name for which the certificate should be issued"
-  #sensitive = true
 }
 
 output "arn" {
