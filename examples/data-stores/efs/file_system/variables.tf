@@ -2,6 +2,7 @@ variable "subnet_a" {
   type    = string
   default = "mysubnet"
 }
+
 variable "subnet_b" {
   type    = string
   default = "my-subnet"
