@@ -10,12 +10,11 @@ provider "aws" {
 module "ssl-certificate" {
   source = "../../../modules/management/certificates"
 
-  description = "${var.service} load balancer and target groups for ${var.environment}"
-  environment = var.environment
-  service     = var.service
-  managed_by  = var.managed_by
-  owner       = var.owner
-
+  description       = "${var.service} load balancer and target groups for ${var.environment}"
+  environment       = var.environment
+  service           = var.service
+  managed_by        = var.managed_by
+  owner             = var.owner
   domain-name       = var.domain-name
   validation-method = var.validation-method
 
