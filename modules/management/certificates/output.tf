@@ -15,6 +15,6 @@ output "id" {
 
 output "status" {
   value       = aws_acm_certificate.ssl-certificate.status
-  description = "Status of the certificate."
+  description = "Status of the certificate"
 }
 
