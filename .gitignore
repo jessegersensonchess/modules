@@ -2,3 +2,8 @@
 */.terraform.lock.hcl
 */terraform.tfstate
 */terraform.tfstate.backup
+examples/management/certificates/.terraform/**
+examples/management/certificates/.terra*
+examples/management/certificates/.terra*
+examples/management/certificates/.terra*
+examples/management/certificates/.terraform/providers/registry.terraform.io/hashicorp/aws/5.9.0/linux_amd64/terraform-provider-aws_v5.9.0_x5
