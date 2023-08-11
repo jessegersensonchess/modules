@@ -66,18 +66,18 @@ module "listener-rule" {
   priority         = var.listener-rule-priority
 }
 
-data "aws_ecr_image" "image" {
-  repository_name = local.service
-  image_tag       = var.image_tag
-}
-
-output "aws_ecr_id" {
-  value = data.aws_ecr_image.image.id
-}
-
-output "aws_ecr_image-image_pushed_at" {
-  value = data.aws_ecr_image.image.image_pushed_at
-}
+#data "aws_ecr_image" "image" {
+#  repository_name = local.service
+#  image_tag       = var.image_tag
+#}
+#
+#output "aws_ecr_id" {
+#  value = data.aws_ecr_image.image.id
+#}
+#
+#output "aws_ecr_image-image_pushed_at" {
+#  value = data.aws_ecr_image.image.image_pushed_at
+#}
 
 module "service" {
   source                                       = "../../services/ecs/service"
@@ -93,7 +93,7 @@ module "service" {
   environment                                  = local.environment
   owner                                        = local.owner
   force_new_deployment                         = var.force_new_deployment
-  control_value                                = data.aws_ecr_image.image.id
+  control_value                                = "1" # data.aws_ecr_image.image.id
   assign_public_ip                             = var.assign_public_ip
   capacity_provider_strategy_base              = var.capacity_provider_strategy_base
   capacity_provider_strategy_capacity_provider = var.capacity_provider_strategy_capacity_provider

@@ -7,9 +7,7 @@
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+No providers.
 
 ## Modules
 
@@ -27,9 +25,7 @@
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [aws_ecr_image.image](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecr_image) | data source |
+No resources.
 
 ## Inputs
 
@@ -90,8 +86,6 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_aws_ecr_id"></a> [aws\_ecr\_id](#output\_aws\_ecr\_id) | n/a |
-| <a name="output_aws_ecr_image-image_pushed_at"></a> [aws\_ecr\_image-image\_pushed\_at](#output\_aws\_ecr\_image-image\_pushed\_at) | n/a |
 | <a name="output_ecr-repository_url"></a> [ecr-repository\_url](#output\_ecr-repository\_url) | ECR repository URL |
 | <a name="output_efs-accesspoint-bin"></a> [efs-accesspoint-bin](#output\_efs-accesspoint-bin) | Access point id for /bin |
 | <a name="output_efs-accesspoint-config"></a> [efs-accesspoint-config](#output\_efs-accesspoint-config) | Access point id for /config |
