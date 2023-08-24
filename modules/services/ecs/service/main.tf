@@ -26,9 +26,8 @@ resource "aws_ecs_service" "service" {
   force_new_deployment = var.force_new_deployment
 
   triggers = {
-    container_port   = var.container_port
-    target_group_arn = var.target_group_arn
-    control_value    = var.control_value
+    container_port = var.container_port
+    #  target_group_arn = var.target_group_arn
   }
 
   deployment_circuit_breaker {
@@ -56,6 +55,10 @@ resource "aws_ecs_service" "service" {
     assign_public_ip = var.assign_public_ip
     security_groups  = var.security_groups
     subnets          = var.subnets
+  }
+
+  lifecycle {
+    ignore_changes = [task_definition]
   }
 
   tags = {
