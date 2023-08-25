@@ -35,5 +35,5 @@ output "aws_private_route_table_a_id" {
 
 output "aws_private_route_table_b_id" {
   value       = aws_route_table.private_route_table_b.id
-  description = "Route table id for private route B"
+  description = "Route table id for private route B."
 }
