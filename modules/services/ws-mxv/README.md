@@ -73,6 +73,7 @@ No resources.
 | <a name="input_scan_on_push"></a> [scan\_on\_push](#input\_scan\_on\_push) | Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false). | `bool` | `true` | no |
 | <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | Security group IDs, used by EFS filesystem | `list(string)` | <pre>[<br>  "my-security_groups"<br>]</pre> | no |
 | <a name="input_service"></a> [service](#input\_service) | (optional) Service which uses this resource. Value appears as a tag with key Service | `string` | `"my-service"` | no |
+| <a name="input_slow_start"></a> [slow\_start](#input\_slow\_start) | Amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. | `number` | `30` | no |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | n/a | `list(string)` | <pre>[<br>  "my-subnets"<br>]</pre> | no |
 | <a name="input_target-group-port"></a> [target-group-port](#input\_target-group-port) | n/a | `number` | `80` | no |
 | <a name="input_task-definition-containerPort"></a> [task-definition-containerPort](#input\_task-definition-containerPort) | n/a | `number` | `1443` | no |

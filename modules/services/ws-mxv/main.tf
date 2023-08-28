@@ -114,6 +114,7 @@ module "target-group" {
   health_check_interval            = var.health_check_interval
   vpc_id                           = var.vpc_id
   deregistration_delay             = var.deregistration_delay
+  slow_start                       = var.slow_start
 }
 
 module "task-definition" {

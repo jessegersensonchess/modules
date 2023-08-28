@@ -39,6 +39,13 @@ variable "health_check_path" {
   description = "Destination for the health check request. Required for HTTP/HTTPS ALB and HTTP NLB. Only applies to HTTP/HTTPS."
 }
 
+variable "slow_start" {
+  type        = number
+  default     = 30
+  description = "Amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable."
+
+}
+
 variable "health_check_unhealthy_threshold" {
   type        = number
   default     = 3
