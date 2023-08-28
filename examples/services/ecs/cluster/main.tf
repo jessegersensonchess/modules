@@ -14,33 +14,27 @@ provider "aws" {
 
 }
 
-
 locals {
-  environment = var.environment
-  owner       = var.owner
-  service     = var.service
-
-  #any_port = 0
-
+  environment               = var.environment
+  owner                     = var.owner
+  service                   = var.service
   containerInsights-value   = "disabled"
   capacity-providers        = ["FARGATE_SPOT"]
   default-capacity-provider = "FARGATE_SPOT"
-  #managed_by                = "Terraform"
+  managed_by                = var.managed_by
   #safe_to_delete            = true
   #lb_listener_port          = 443
   #target-group-port         = 1230
 }
 
-
 module "cluster" {
-  #  source = "git::https://github.com/jessegersensonchess/terraform.git//modules/services/ecs/cluster?ref=v0.0.20"
-  source       = "../../../../modules/services/ecs/cluster"
-  description  = "${local.environment} cluster for the ${local.service} service"
-  service      = local.service
-  cluster-name = local.service
-  environment  = local.environment
-  #service-discovery-namespace-arn = local.environment
+  source                    = "../../../../modules/services/ecs/cluster"
+  description               = "${local.environment} cluster for the ${local.service} service"
+  service                   = local.service
+  cluster-name              = local.service
+  environment               = local.environment
   owner                     = local.owner
+  managed_by                = local.managed_by
   containerInsights-value   = local.containerInsights-value
   capacity-providers        = local.capacity-providers
   default-capacity-provider = local.default-capacity-provider

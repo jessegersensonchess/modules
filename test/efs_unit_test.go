@@ -3,6 +3,7 @@ package test
 import (
 	"fmt"
 	"strings"
+	"terratests/utils"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -33,22 +34,11 @@ func TestUnitEfs(t *testing.T) {
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
 	defer terraform.Destroy(t, terraformOptions)
 
-	fmt.Println("=========================== uniqueId =", uniqueId)
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Check that the app is working as expected
 	validateEfs(t, terraformOptions, uniqueId)
-}
-
-func Expect(t *testing.T, testName string, want string, got string) bool {
-	if want == got {
-		fmt.Printf("Test %v: %v == %v: %v\n", testName, want, got, "true")
-		return true
-	}
-	fmt.Printf("Test %v: %v == %v: %v\n", testName, want, got, "false")
-	t.Errorf("ERROR: %v, expected %v got %v", testName, want, got)
-	return want == got
 }
 
 // Validate
@@ -62,13 +52,10 @@ func validateEfs(t *testing.T, terraformOptions *terraform.Options, uniqueId str
 	managed_by := terraform.Output(t, terraformOptions, "managed_by")
 	fmt.Println("dns_name = ", dns_name)
 
-	Expect(t, "managed_by", managed_by, "TerraTest")
-	Expect(t, "owner", owner, "king")
-	Expect(t, "environment", environment, "friendly")
-	Expect(t, "encrypted", encrypted, "false")
-
-	if !strings.Contains(service, uniqueId) {
-		t.Errorf("ERROR: expected service uniqueId, got %v, %v", service, uniqueId)
-	}
+	utils.AssertEqual(t, "managed_by", managed_by, "TerraTest")
+	utils.AssertEqual(t, "owner", owner, "king")
+	utils.AssertEqual(t, "environment", environment, "friendly")
+	utils.AssertEqual(t, "encrypted", encrypted, "false")
+	utils.AssertContains(t, "service", service, uniqueId)
 
 }

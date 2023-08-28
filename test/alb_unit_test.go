@@ -3,6 +3,7 @@ package test
 import (
 	"fmt"
 	"strings"
+	"terratests/utils"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -68,53 +69,20 @@ func validateAlb(t *testing.T, terraformOptions *terraform.Options, uniqueId str
 
 	dns_name = strings.ToLower(dns_name)
 
-	if !strings.Contains(dns_name, uniqueId) {
-		t.Errorf("ERROR: expected dns_name to contain uniqueId. Got %v and %v", dns_name, uniqueId)
-	}
+	utils.AssertContains(t, "dns_name", dns_name, uniqueId)
+	utils.AssertEqual(t, "environment", environment, "friendly")
+	utils.AssertEqual(t, "drop_invalid_header_fields", drop_invalid_header_fields, "true")
 
-	if environment != "friendly" {
-		t.Errorf("ERROR: expected environment=friendly, got %v", environment)
-	}
-	if drop_invalid_header_fields != "true" {
-		t.Errorf("ERROR: expected drop_invalid_header_fields=true, got %v", drop_invalid_header_fields)
-	}
+	utils.AssertEqual(t, "load_balancer_type", load_balancer_type, "application")
+	utils.AssertEqual(t, "enable_deletion_protection", enable_deletion_protection, "false")
+	utils.AssertEqual(t, "enable_http2", enable_http2, "true")
+	utils.AssertEqual(t, "owner", owner, "king")
+	utils.AssertEqual(t, "idle_timeout", idle_timeout, "44")
+	utils.AssertEqual(t, "managed_by", managed_by, "terratest")
+	utils.AssertEqual(t, "ip_address_type", ip_address_type, "ipv4")
+	utils.AssertEqual(t, "preserve_host_header", preserve_host_header, "true")
 
-	if load_balancer_type != "application" {
-		t.Errorf("ERROR: load_balancer_type=application, got %v", load_balancer_type)
-	}
-
-	if enable_deletion_protection != "false" {
-		t.Errorf("ERROR: expected enable_deletion_protection=false, got %v", enable_deletion_protection)
-	}
-
-	if enable_http2 != "true" {
-		t.Errorf("ERROR: expected enable_http2=true, got %v", enable_http2)
-	}
-
-	if preserve_host_header != "true" {
-		t.Errorf("ERROR: expected preserve_host_header=true, got %v", preserve_host_header)
-	}
-
-	if ip_address_type != "ipv4" {
-		t.Errorf("ERROR: expected ip_address_type = ipv4, got %v", ip_address_type)
-	}
-
-	if managed_by != "terratest" {
-		t.Errorf("ERROR: expected managed_by = terratest , got %v", managed_by)
-	}
-
-	if owner != "king" {
-		t.Errorf("ERROR: expected owner = king , got %v", owner)
-	}
-	if idle_timeout != "44" {
-		t.Errorf("ERROR: expected idle_timeout = 44 , got %v", idle_timeout)
-	}
-
-	if !strings.Contains(service, uniqueId) {
-		t.Errorf("ERROR: expected  service to include uniqueId, got %v, %v", service, uniqueId)
-	}
-	if !strings.Contains(arn, region) {
-		t.Errorf("ERROR: expected  arn to include region, got %v, %v", arn, region)
-	}
+	utils.AssertContains(t, "service", service, uniqueId)
+	utils.AssertContains(t, "arn_region", arn, region)
 
 }

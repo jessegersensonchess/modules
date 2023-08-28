@@ -3,6 +3,7 @@ package test
 import (
 	"fmt"
 	"strings"
+	"terratests/utils"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -42,7 +43,6 @@ func TestUnitEcr(t *testing.T) {
 	validateEcr(t, terraformOptions)
 }
 
-// Validate the "Hello, World" app is working
 func validateEcr(t *testing.T, terraformOptions *terraform.Options) {
 	// Run `terraform output` to get the values of output variables
 	url := terraform.Output(t, terraformOptions, "url")
@@ -53,31 +53,13 @@ func validateEcr(t *testing.T, terraformOptions *terraform.Options) {
 	scan_on_push := terraform.Output(t, terraformOptions, "scan_on_push")
 	environment := terraform.Output(t, terraformOptions, "environment")
 
-	if force_delete != "true" {
-		t.Errorf("ERROR: expected force_delete=true, got %v", force_delete)
-	}
+	utils.AssertEqual(t, "force_delete", force_delete, "true")
+	utils.AssertEqual(t, "encryption_type", encryption_type, "AES256")
+	utils.AssertEqual(t, "scan_on_push", scan_on_push, "false")
+	utils.AssertEqual(t, "environment", environment, "friendly")
+	utils.AssertEqual(t, "image_tag_mutability", image_tag_mutability, "MUTABLE")
 
-	if !strings.Contains(url, "eu-west-2") {
-		t.Errorf("ERROR: expected region=eu-west-2, got %v", url)
-	}
+	utils.AssertContains(t, "url", url, "eu-west-2")
+	utils.AssertContains(t, "url_name", url, name)
 
-	if encryption_type != "AES256" {
-		t.Errorf("ERROR: expected encryption_type=AES256, got %v", encryption_type)
-	}
-
-	if scan_on_push != "false" {
-		t.Errorf("ERROR: expected scan_on_push=false, got %v", scan_on_push)
-	}
-
-	if environment != "friendly" {
-		t.Errorf("ERROR: expected environment=friendly, got %v", environment)
-	}
-
-	if image_tag_mutability != "MUTABLE" {
-		t.Errorf("ERROR: expected image_tag_mutability=MUTABLE, got %v", image_tag_mutability)
-	}
-
-	if !strings.Contains(url, name) {
-		t.Errorf("ERROR: expected url to contain name, got url=%v, name=%v", url, name)
-	}
 }

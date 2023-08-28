@@ -46,7 +46,7 @@ variable "logging" {
 #  default     = "development"
 #  description = "The ARN that Amazon Route 53 assigns to the namespace when you create it. See https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/service_discovery_http_namespace.html"
 #}
-#
+
 variable "service" {
   type        = string
   default     = "my-service"
@@ -77,7 +77,7 @@ variable "created-by" {
   description = "(optional) Entity which created the resource. Value appears as a tag with key Created_By"
 }
 
-variable "managed-by" {
+variable "managed_by" {
   type        = string
   default     = "Terraform"
   description = "(optional) Environment of the resource. Value appears as a tag with key Environment"

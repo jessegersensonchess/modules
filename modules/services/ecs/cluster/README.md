@@ -37,7 +37,7 @@ No modules.
 | <a name="input_description"></a> [description](#input\_description) | basic description of resource. Value appears as a meta tag with key Description | `string` | `"cluster description"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | (optional) Environment of the resource. Value appears as a tag with key Environment | `string` | `"dev"` | no |
 | <a name="input_logging"></a> [logging](#input\_logging) | The log setting to use for redirecting logs for your execute command results. Valid values are NONE, DEFAULT, and OVERRIDE. | `string` | `"DEFAULT"` | no |
-| <a name="input_managed-by"></a> [managed-by](#input\_managed-by) | (optional) Environment of the resource. Value appears as a tag with key Environment | `string` | `"Terraform"` | no |
+| <a name="input_managed_by"></a> [managed\_by](#input\_managed\_by) | (optional) Environment of the resource. Value appears as a tag with key Environment | `string` | `"Terraform"` | no |
 | <a name="input_owner"></a> [owner](#input\_owner) | (optional) Owner of the resource. Value appears as a tag with key Owner | `string` | `"Jesse Gersenson"` | no |
 | <a name="input_service"></a> [service](#input\_service) | (optional) Service which uses this resource. Value appears as a tag with key Service | `string` | `"my-service"` | no |
 
@@ -45,6 +45,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_cluster"></a> [cluster](#output\_cluster) | n/a |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | Name of the http namespace. |
 | <a name="output_output"></a> [output](#output\_output) | output from aws\_ecs\_cluster |
 <!-- END_TF_DOCS -->

@@ -3,6 +3,7 @@ package test
 import (
 	"fmt"
 	"strings"
+	"terratests/utils"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -21,7 +22,10 @@ func TestUnitEcsCluster(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"service": fmt.Sprintf("ecs-service-%s", uniqueId),
+			"service":     fmt.Sprintf("ecs-service-%s", uniqueId),
+			"environment": "friendly",
+			"owner":       "king",
+			"managed_by":  "TerraTest",
 			//			"cluster-name": fmt.Sprintf("ecs-cluster-%s", uniqueId),
 		},
 	}
@@ -40,22 +44,16 @@ func TestUnitEcsCluster(t *testing.T) {
 func validateEcsCluster(t *testing.T, terraformOptions *terraform.Options, uniqueId string) {
 	// Run `terraform output` to get the values of output variables
 	output := terraform.Output(t, terraformOptions, "output")
-	if strings.Contains(output, uniqueId) {
-		fmt.Println("\n\n\nvalidateEcsCluster yes, output contains uniqueId \n\n\n\n=========== ")
-		fmt.Sprintf("output = %v, uniqueId = %v\n", output, uniqueId)
-		t.Logf("Success !")
-	} else {
-		fmt.Println("------------------- validateEcsCluster: no, output does not contain uniqueId ----------------")
-		fmt.Sprintf("output = %v, uniqueId = %v\n", output, uniqueId)
-		t.Errorf("Failed ! got %v", output)
 
-	}
+	owner := terraform.Output(t, terraformOptions, "owner")
+	service := terraform.Output(t, terraformOptions, "service")
+	environment := terraform.Output(t, terraformOptions, "environment")
+	managed_by := terraform.Output(t, terraformOptions, "managed_by")
 
-	// Verify the app returns a 200 OK with the text "Hello, World!"
-	//	expectedStatus := 200
-	//	expectedBody := "Hello, World!"
-	//	maxRetries := 10
-	//	timeBetweenRetries := 3 * time.Second
-	//	http_helper.HttpGetWithRetry(t, output, nil, expectedStatus, expectedBody, maxRetries, timeBetweenRetries)
-	fmt.Println(output)
+	utils.AssertContains(t, "output", output, uniqueId)
+
+	utils.AssertEqual(t, "managed_by", managed_by, "TerraTest")
+	utils.AssertEqual(t, "owner", owner, "king")
+	utils.AssertEqual(t, "environment", environment, "friendly")
+	utils.AssertContains(t, "service", service, uniqueId)
 }

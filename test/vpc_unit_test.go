@@ -2,8 +2,12 @@ package test
 
 import (
 	"fmt"
+	"math/rand"
+	"strconv"
 	"strings"
+	"terratests/utils"
 	"testing"
+	"time"
 
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -16,13 +20,16 @@ func TestUnitVpc(t *testing.T) {
 	// A unique ID we can use to namespace all our resource names and ensure they don't clash across parallel tests
 	uniqueId := strings.ToLower(random.UniqueId())
 
+	rand.Seed(time.Now().UnixNano())
+	uniqueInt := rand.Intn(150) + 100
+
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../examples/network/vpc",
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"base_subnet":      "10.88",
+			"base_subnet":      fmt.Sprintf("10.%s", strconv.Itoa(uniqueInt)),
 			"region":           "eu-west-2",
 			"network_basename": fmt.Sprintf("mynetwork-%s", uniqueId),
 			"environment":      "myenv",
@@ -43,7 +50,6 @@ func TestUnitVpc(t *testing.T) {
 	validateVpc(t, terraformOptions)
 }
 
-// Validate the "Hello, World" app is working
 func validateVpc(t *testing.T, terraformOptions *terraform.Options) {
 	// Run `terraform output` to get the values of output variables
 
@@ -65,28 +71,11 @@ func validateVpc(t *testing.T, terraformOptions *terraform.Options) {
 	name := terraform.Output(t, terraformOptions, "name")
 	managed_by := terraform.Output(t, terraformOptions, "managed_by")
 
-	if !strings.Contains(base_subnet, "10.88") {
-		t.Errorf("ERROR: expected base_subnet=10.88, got %v", base_subnet)
-	}
-
-	if enable_network_address_usage_metrics != "true" {
-		t.Errorf("ERROR: expected enable_network_address_usage_metrics=true, got %v", enable_network_address_usage_metrics)
-	}
-
-	if environment != "myenv" {
-		t.Errorf("ERROR: expected environment=myenv, got %v", environment)
-	}
-
-	if managed_by != "terratest" {
-		t.Errorf("ERROR: expected managed_by=terratest, got %v", managed_by)
-	}
-
-	if !strings.Contains(name, "mynetwork") {
-		t.Errorf("ERROR: expected name=mynetwork-*, got %v", name)
-	}
-
-	if !(len(vpc_id) > 0) {
-		t.Errorf("ERROR: expected len(vpc_id) > 0, got %v (%v)", len(vpc_id), vpc_id)
-	}
+	utils.AssertContains(t, "base_subnet", base_subnet, "10.")
+	utils.AssertContains(t, "name", name, "mynetwork")
+	utils.AssertEqual(t, "enable_network_address_usage_metrics", enable_network_address_usage_metrics, "true")
+	utils.AssertEqual(t, "environment", environment, "myenv")
+	utils.AssertEqual(t, "managed_by", managed_by, "terratest")
+	utils.AssertEqual(t, "vpc_id_length", strconv.FormatBool(len(vpc_id) > 0), "true")
 
 }

@@ -3,6 +3,7 @@ package test
 import (
 	"fmt"
 	"strings"
+	"terratests/utils"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -52,12 +53,15 @@ func validateCertificate(t *testing.T, terraformOptions *terraform.Options, uniq
 	arn := terraform.Output(t, terraformOptions, "arn")
 	ssl_certificate_domain_name := terraform.Output(t, terraformOptions, "ssl-certificate-domain-name")
 
-	if !strings.Contains(ssl_certificate_domain_name, uniqueId) {
-		t.Errorf("ERROR: expected ssl_certificate_domain_name to include uniqueId, got %v, %v", ssl_certificate_domain_name, uniqueId)
-	}
+	utils.AssertContains(t, "ssl_certificate_domain-name", ssl_certificate_domain_name, uniqueId)
+	utils.AssertContains(t, "arn_and_region", arn, region)
 
-	if !strings.Contains(arn, region) {
-		t.Errorf("ERROR: expected  arn to include region, got %v, %v", arn, region)
-	}
+	//	if !strings.Contains(ssl_certificate_domain_name, uniqueId) {
+	//		t.Errorf("ERROR: expected ssl_certificate_domain_name to include uniqueId, got %v, %v", ssl_certificate_domain_name, uniqueId)
+	//	}
+	//
+	//	if !strings.Contains(arn, region) {
+	//		t.Errorf("ERROR: expected  arn to include region, got %v, %v", arn, region)
+	//	}
 
 }

@@ -39,10 +39,12 @@ resource "aws_ecs_cluster" "cluster" {
   tags = {
     Name        = var.cluster-name
     APP         = var.service
+    Service     = var.service
     Description = var.description
     Owner       = var.owner
     Created_By  = var.created-by
     Environment = var.environment
+    Managed_By  = var.managed_by
   }
 }
 
@@ -54,7 +56,10 @@ resource "aws_service_discovery_http_namespace" "namespace" {
     Created_By  = var.created-by
     Environment = var.environment
     Owner       = var.owner
-    Managed_By  = var.managed-by
+    Managed_By  = var.managed_by
   }
 }
 
+output "cluster" {
+  value = aws_ecs_cluster.cluster
+}

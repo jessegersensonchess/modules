@@ -28,15 +28,15 @@ variable "owner" {
   default = "Jesse Gersenson"
 }
 
-#variable "created-by" {
-#  type    = string
-#  default = "Terraform"
-#}
-#
-#variable "managed-by" {
-#  type    = string
-#  default = "Terraform"
-#}
+variable "created-by" {
+  type    = string
+  default = "Terraform"
+}
+
+variable "managed_by" {
+  type    = string
+  default = "Terraform"
+}
 
 #variable "capacity-providers" {
 #  type    = list(string)
