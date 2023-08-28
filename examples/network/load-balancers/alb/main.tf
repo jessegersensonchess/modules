@@ -9,7 +9,7 @@ provider "aws" {
 
 locals {
   default_cidr     = "0.0.0.0/0"
-  base_subnet      = "10.87"
+  base_subnet      = var.base_subnet # "10.87"
   az_a             = "${data.aws_region.current.name}a"
   az_b             = "${data.aws_region.current.name}b"
   region           = var.region

@@ -2,9 +2,12 @@ package test
 
 import (
 	"fmt"
+	"math/rand"
+	"strconv"
 	"strings"
 	"terratests/utils"
 	"testing"
+	"time"
 
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -18,6 +21,9 @@ func TestUnitAlb(t *testing.T) {
 	// A unique ID we can use to namespace all our resource names and ensure they don't clash across parallel tests
 	uniqueId := strings.ToLower(random.UniqueId())
 
+	rand.Seed(time.Now().UnixNano())
+	uniqueInt := rand.Intn(150) + 100
+
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../examples/network/load-balancers/alb",
@@ -25,6 +31,7 @@ func TestUnitAlb(t *testing.T) {
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
 			"service":                    fmt.Sprintf("myservice-%s", uniqueId),
+			"base_subnet":                fmt.Sprintf("10.%s", strconv.Itoa(uniqueInt)),
 			"owner":                      "king",
 			"region":                     "eu-west-2",
 			"managed_by":                 "terratest",
@@ -49,7 +56,6 @@ func TestUnitAlb(t *testing.T) {
 	validateAlb(t, terraformOptions, uniqueId)
 }
 
-// Validate the "Hello, World" app is working
 func validateAlb(t *testing.T, terraformOptions *terraform.Options, uniqueId string) {
 	// Run `terraform output` to get the values of output variables
 	dns_name := terraform.Output(t, terraformOptions, "dns_name")

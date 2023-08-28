@@ -13,6 +13,11 @@ variable "internal" {
   default = false
 }
 
+variable "base_subnet" {
+  type    = string
+  default = "10.87"
+}
+
 variable "enable_waf_fail_open" {
   type    = bool
   default = false
