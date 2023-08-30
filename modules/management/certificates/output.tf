@@ -5,12 +5,12 @@ output "ssl-certificate-domain-name" {
 
 output "arn" {
   value       = aws_acm_certificate.ssl-certificate.arn
-  description = "ARN of the certificate"
+  description = "Certificate ARN"
 }
 
 output "id" {
   value       = aws_acm_certificate.ssl-certificate.id
-  description = "ARN of the certificate"
+  description = "Certificate ARN"
 }
 
 output "status" {

@@ -39,8 +39,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_arn"></a> [arn](#output\_arn) | ARN of the certificate |
-| <a name="output_id"></a> [id](#output\_id) | ARN of the certificate |
+| <a name="output_arn"></a> [arn](#output\_arn) | Certificate ARN |
+| <a name="output_id"></a> [id](#output\_id) | Certificate ARN |
 | <a name="output_ssl-certificate-domain-name"></a> [ssl-certificate-domain-name](#output\_ssl-certificate-domain-name) | Domain name for which the certificate should be issued |
 | <a name="output_status"></a> [status](#output\_status) | Certificate status |
 <!-- END_TF_DOCS -->
