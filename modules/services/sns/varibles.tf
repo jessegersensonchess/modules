@@ -8,6 +8,13 @@ variable "email_endpoint" {
   type        = string
 }
 
+variable "sns_protocol" {
+  description = "Protocol to use. Valid values are: sqs, sms, lambda, firehose, and application. Protocols email, email-json, http and https are also valid but partially supported."
+  default     = "email"
+  type        = string
+}
+
+
 variable "region" {
   description = "AWS Region for the resources"
   type        = string
