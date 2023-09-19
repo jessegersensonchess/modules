@@ -5,7 +5,7 @@ output "sns_topic_arn" {
 }
 
 output "sns_subscription_arn" {
-  value       = aws_sns_topic_subscription.subscription.arn
+  value       = aws_sns_topic_subscription.sns_topic_subscription.arn
   description = ""
 }
 
