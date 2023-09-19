@@ -9,7 +9,7 @@ variable "email_endpoint" {
 }
 
 variable "sns_protocol" {
-  description = "Protocol to use. Valid values are: sqs, sms, lambda, firehose, and application. Protocols email, email-json, http and https are also valid but partially supported."
+  description = "Protocol to use. Valid values are: sqs, sms, lambda, firehose, and application. Protocols email, email-json, http and https are also valid but partially supported"
   default     = "email"
   type        = string
 }

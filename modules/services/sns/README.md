@@ -26,7 +26,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_email_endpoint"></a> [email\_endpoint](#input\_email\_endpoint) | Email endpoint for the SNS subscription | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | AWS Region for the resources | `string` | n/a | yes |
-| <a name="input_sns_protocol"></a> [sns\_protocol](#input\_sns\_protocol) | Protocol to use. Valid values are: sqs, sms, lambda, firehose, and application. Protocols email, email-json, http and https are also valid but partially supported. | `string` | `"email"` | no |
+| <a name="input_sns_protocol"></a> [sns\_protocol](#input\_sns\_protocol) | Protocol to use. Valid values are: sqs, sms, lambda, firehose, and application. Protocols email, email-json, http and https are also valid but partially supported | `string` | `"email"` | no |
 | <a name="input_sns_topic_name"></a> [sns\_topic\_name](#input\_sns\_topic\_name) | Name of the SNS Topic | `string` | n/a | yes |
 
 ## Outputs
