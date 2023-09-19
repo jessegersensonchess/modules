@@ -20,6 +20,6 @@ func AssertContains(t *testing.T, testName string, service, uniqueId string) {
 	t.Helper() // marks this function as a test helper
 
 	if !strings.Contains(service, uniqueId) {
-		t.Errorf("ERROR: %s: expected equality; got %v, %v", testName, service, uniqueId)
+		t.Errorf("ERROR: %s: expected string to contain substring; got %v, %v", testName, service, uniqueId)
 	}
 }
