@@ -18,21 +18,6 @@ output "efs-filesystem" {
   description = "All EFS output. Depreciated, this output will be removed. Use 'output'"
 }
 
-output "efs-accesspoint-bin" {
-  value       = module.efs-access_point-bin.output["id"]
-  description = "Access point id for /bin"
-}
-
-output "efs-accesspoint-config" {
-  value       = module.efs-access_point-config.output["id"]
-  description = "Access point id for /config"
-}
-
-output "efs-accesspoint-logs" {
-  value       = module.efs-access_point-logs.output["id"]
-  description = "Access point id for /logs"
-}
-
 output "target_group" {
   value       = module.target-group.target_group
   description = "target group"
