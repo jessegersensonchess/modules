@@ -23,30 +23,6 @@ module "ecr" {
   scan_on_push = var.scan_on_push
 }
 
-module "efs-access_point-bin" {
-  source        = "../../data-stores/efs/access_point"
-  service       = local.service
-  path          = var.access_point_path_bin #"/bin"
-  filesystem_id = module.efs.filesystem_id
-  environment   = local.environment
-}
-
-module "efs-access_point-config" {
-  source        = "../../data-stores/efs/access_point"
-  service       = local.service
-  path          = var.access_point_path_config #"/config"
-  filesystem_id = module.efs.filesystem_id
-  environment   = local.environment
-}
-
-module "efs-access_point-logs" {
-  source        = "../../data-stores/efs/access_point"
-  service       = local.service
-  path          = var.access_point_path_logs #"/logs"
-  filesystem_id = module.efs.filesystem_id
-  environment   = local.environment
-}
-
 module "efs" {
   source          = "../../data-stores/efs/file_system"
   service         = local.service
